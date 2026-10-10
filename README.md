@@ -29,7 +29,7 @@
 | :---: | :---: |
 | ![Exploring the overworld](docs/media/exploration.gif) | ![A loot drop showing item rarity](docs/media/loot.gif) |
 | **Boss fight** | **Character sheet** |
-| ![Fighting the Demon Slime boss](docs/media/boss.gif) | ![Inventory, equipment and stats](docs/media/character-sheet.png) |
+| ![Fighting the Demon Slime boss](docs/media/boss.gif) | ![Inventory, equipment and stats](docs/media/character-sheet.gif) |
 
 ## Download & Play
 
