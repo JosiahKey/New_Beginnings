@@ -1,7 +1,10 @@
 # New Beginnings
 
-<!-- Hero GIF: record ~8s of combat with ScreenToGif, save as docs/media/combat.gif (<10 MB) -->
-![Turn-based combat in New Beginnings](docs/media/combat.gif)
+| Exploration | Loot drop |
+| :---: | :---: |
+| ![Exploring the overworld](docs/media/exploration.gif) | ![A loot drop showing item rarity](docs/media/loot.gif) |
+| **Boss fight** | **Character sheet** |
+| ![Fighting the Demon Slime boss](docs/media/boss.gif) | ![Inventory, equipment and stats](docs/media/character-sheet.gif) |
 
 **A turn-based fantasy RPG built in Godot 4: explore four regions, fight through random encounters, and chase randomized loot up to legendary rarity.**
 
@@ -21,15 +24,6 @@
 - **Real stakes:** dying destroys a random piece of your equipped gear.
 - **Two NPCs and a side quest** that rewards a guaranteed rare weapon.
 - **Inventory and equipment UI** with drag and drop, slot highlighting and a live stat sheet.
-
-## Gallery
-
-<!-- Record with ScreenToGif, each under 10s and 10 MB, saved in docs/media/ -->
-| Exploration | Loot drop |
-| :---: | :---: |
-| ![Exploring the overworld](docs/media/exploration.gif) | ![A loot drop showing item rarity](docs/media/loot.gif) |
-| **Boss fight** | **Character sheet** |
-| ![Fighting the Demon Slime boss](docs/media/boss.gif) | ![Inventory, equipment and stats](docs/media/character-sheet.gif) |
 
 ## Download & Play
 
