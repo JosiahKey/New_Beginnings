@@ -35,7 +35,7 @@
 
 > **Windows only.** No installation needed.
 
-1. Download **[`NewBeginnings_version_0.1.2.exe`](these_files_to_play/NewBeginnings_version_0.1.2.exe)** from the `these_files_to_play/` folder.
+1. Download **`NewBeginnings_version_0.1.2.exe`** from the **[latest release](https://github.com/JosiahKey/New_Beginnings/releases/latest)**.
 2. Double-click it to play.
 3. Windows SmartScreen may warn about an unrecognized app because the build isn't code-signed. Click **More info → Run anyway**.
 
