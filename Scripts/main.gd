@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var combat_scene = preload("res://Scenes/Combat.tscn")
-@onready var boss_scene = preload("res://Scenes/Combat_Boss.tscn")
 @onready var game_over_scene = preload("res://Scenes/UI/game_over.tscn")
 @onready var reward_scene = preload("res://Scenes/UI/Reward.tscn")
 @onready var quest_reward_scene = preload("res://Scenes/UI/QuestReward.tscn")
