@@ -1,9 +1,9 @@
-[gd_resource type="TileSet" format=3 uid="uid://cbpj5bh0nxwfq"]
+[gd_resource type="TileSet" format=3 uid="uid://cr2uaskkow0vp"]
 
-[ext_resource type="Texture2D" uid="uid://b6x8043sbtgyt" path="res://Assets/tile_assets/TX Props.png" id="1_am1jj"]
+[ext_resource type="Texture2D" uid="uid://dqkixhpx8845g" path="res://Assets/tile_assets/ruins/catacomb_props.png" id="1_ilpjf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tj5wv"]
-texture = ExtResource("1_am1jj")
+texture = ExtResource("1_ilpjf")
 14:0/0 = 0
 14:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:0/0 = 0
@@ -31,13 +31,9 @@ texture = ExtResource("1_am1jj")
 16:1/0 = 0
 17:1/0 = 0
 18:1/0 = 0
-18:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 19:1/0 = 0
-19:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 20:1/0 = 0
-20:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 21:1/0 = 0
-21:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 24:1/0 = 0
 24:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 25:1/0 = 0
@@ -91,9 +87,13 @@ texture = ExtResource("1_am1jj")
 16:3/0 = 0
 17:3/0 = 0
 18:3/0 = 0
+18:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 19:3/0 = 0
+19:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 20:3/0 = 0
+20:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 21:3/0 = 0
+21:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 24:3/0 = 0
 25:3/0 = 0
 28:3/0 = 0
@@ -527,6 +527,18 @@ texture = ExtResource("1_am1jj")
 17:31/0 = 0
 18:31/0 = 0
 19:31/0 = 0
+4:18/0 = 0
+4:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:19/0 = 0
+5:19/0 = 0
+6:19/0 = 0
+7:19/0 = 0
+7:18/0 = 0
+7:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:18/0 = 0
+6:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:18/0 = 0
+5:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [resource]
 physics_layer_0/collision_layer = 1

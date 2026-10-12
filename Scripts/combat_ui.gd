@@ -1,24 +1,21 @@
 extends CanvasLayer
 
-@onready var heal_label = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button2/Label
-@onready var hp_bar: TextureProgressBar = $Background_Image/Sub_Menus/HP_Bar/MarginContainer/Health_Prog
-@onready var exp_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/EXP
-@onready var hp_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Combat_Hp_Label
-@onready var armor_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Armor
-@onready var evasion_label: Label = $Background_Image/Sub_Menus/Player_Panel/VBoxContainer/Evasion
+@onready var heal_label = $Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button2/Label
+@onready var hp_bar: TextureProgressBar = $Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/HP_Bar/MarginContainer/Health_Prog
+@onready var exp_label: Label = $Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/EXP_Bar/MarginContainer/EXP
+@onready var hp_label: Label = $Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/HP_Bar/MarginContainer/Combat_Hp_Label
 @onready var player_spr: AnimatedSprite2D = $Background_Image/Player/Player_Sprite
 @onready var emitter: GPUParticles2D = $Background_Image/Player/Hit_Indicator
-@onready var actions_container := $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container
+@onready var actions_container := $Background_Image/Action_Panel
 @onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 @onready var enemy_sprites_container = $Background_Image/Enemy_Sprites
-@onready var enemy_info := $Background_Image/Sub_Menus/Enemy_Panel/V
 @onready var banner_anim := $Background_Image/Turn_Banner/AnimationPlayer
 @onready var banner_label := $Background_Image/Turn_Banner/Label
-@onready var action1 = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button
-@onready var action2 = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button2
-@onready var action3 = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button3
-@onready var action4 = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button4
-@onready var action5 = $Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button5
+@onready var action1 = $Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button
+@onready var action2 = $Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button2
+@onready var action3 = $Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button3
+@onready var action4 = $Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button4
+@onready var action5 = $Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button5
 
 var players_turn: bool = false
 var action_points = PlayerData.get_total_speed()
@@ -40,8 +37,6 @@ func _ready() -> void:
 	hp_bar.max_value = PlayerData.stat_data["Total_hp"]
 	hp_bar.value = PlayerData.stat_data["Current_hp"]
 	hp_label.text = "HP: " + str(int(PlayerData.stat_data["Current_hp"])) + " / " + str(int(PlayerData.stat_data["Total_hp"]))
-	armor_label.text = "Armor: " + str(int(PlayerData.stat_data["PDR"])) + "%"
-	evasion_label.text = "Evasion: " + str(int(PlayerData.stat_data["Evasion"])) + "%"
 	set_tooltips()
 
 func set_tooltips():
@@ -80,16 +75,6 @@ func _on_reward_visibility_changed() -> void:
 		GameState.state = ""
 		SignalBus.combat_exited.emit()
 		self.queue_free()
-
-func update_enemy_info():
-	var enemies = []
-	for i in enemy_info.get_children():
-		i.text = ""
-	for e in enemy_sprites_container.get_children():
-		if e.visible == true:
-			enemies.append(CombatData.combatants_data[e.name]["enemy_name"])
-	for i in range(0,enemies.size()):
-		get_node("Background_Image/Sub_Menus/Enemy_Panel/V/Label" + str(i+1)).text = enemies[i]
 
 func select_enemy(enemy: Control):
 	var nodes = get_tree().get_nodes_in_group("selector")

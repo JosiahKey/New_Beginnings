@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo2a5ylwpnlf7"
-path="res://.godot/imported/dg4.png-a75c489081dc9144da725574b9333dc2.ctex"
+uid="uid://cp8gbahgnri0y"
+path="res://.godot/imported/catacomb_walls.png-872849c83c2d460a6a79470b370ba20a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tile_assets/dg4.png"
-dest_files=["res://.godot/imported/dg4.png-a75c489081dc9144da725574b9333dc2.ctex"]
+source_file="res://Assets/tile_assets/ruins/catacomb_walls.png"
+dest_files=["res://.godot/imported/catacomb_walls.png-872849c83c2d460a6a79470b370ba20a.ctex"]
 
 [params]
 

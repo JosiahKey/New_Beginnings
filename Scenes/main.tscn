@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cif2nqjkhtabc" path="res://Scenes/UI/character_sheet.tscn" id="2_sadeq"]
 [ext_resource type="Script" uid="uid://cjjssbwmlkdnt" path="res://Scripts/item_generator.gd" id="3_2jltt"]
 [ext_resource type="Script" uid="uid://b27bxp0jsbk6k" path="res://Scripts/level_manager.gd" id="4_21xkr"]
-[ext_resource type="PackedScene" uid="uid://cwrmcry7ouqt6" path="res://Scenes/Biomes/Cave/Ruins.tscn" id="5_hptm8"]
+[ext_resource type="PackedScene" uid="uid://cwrmcry7ouqt6" path="res://Scenes/Biomes/Cave/Catacombs.tscn" id="5_hptm8"]
 [ext_resource type="PackedScene" uid="uid://b71ies8xw4egj" path="res://Scenes/Templates/scene_transition.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://e2io5n8exj2y" path="res://Scenes/UI/levelup.tscn" id="8_344ge"]
 [ext_resource type="Script" uid="uid://c5tdymmpntos3" path="res://Scripts/UI/world_map.gd" id="9_hptm8"]

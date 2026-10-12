@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6x8043sbtgyt"
-path="res://.godot/imported/TX Props.png-d433ef2ccda8daa38dec73615d0ecdd8.ctex"
+uid="uid://bybydllxylmem"
+path="res://.godot/imported/catacomb_floors.png-331247fe5e2a5aa774c2abc008727f0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tile_assets/TX Props.png"
-dest_files=["res://.godot/imported/TX Props.png-d433ef2ccda8daa38dec73615d0ecdd8.ctex"]
+source_file="res://Assets/tile_assets/ruins/catacomb_floors.png"
+dest_files=["res://.godot/imported/catacomb_floors.png-331247fe5e2a5aa774c2abc008727f0f.ctex"]
 
 [params]
 

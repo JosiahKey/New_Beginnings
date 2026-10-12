@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://by7wrrs7tsvl4"]
+[gd_scene format=4 uid="uid://by7wrrs7tsvl4"]
 
 [ext_resource type="Texture2D" uid="uid://cddtx7h1vp3ce" path="res://Assets/art_assets/backgorund.png" id="1_k1gaw"]
-[ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/Generic_Tile_Set.tres" id="2_wcb25"]
+[ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/tilesets_res/Generic_Tile_Set.tres" id="2_wcb25"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="3_bgy3h"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="4_jiuxo"]
 

@@ -18,6 +18,8 @@
 [ext_resource type="AudioStream" uid="uid://cs76cljh7ateh" path="res://Audio/SFX/heal.wav" id="13_cy1ba"]
 [ext_resource type="Texture2D" uid="uid://dyu8u5dub1c0" path="res://Assets/item_assets/arms_epic.png" id="14_wpely"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kbh2q"]
+
 [sub_resource type="Gradient" id="Gradient_mi7to"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 
@@ -30,6 +32,20 @@ colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_aqiim"]
 gradient = SubResource("Gradient_g4qrr")
+
+[sub_resource type="Gradient" id="Gradient_kbh2q"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.61235493, 0.18225, 0.28952694, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nnvvn"]
+gradient = SubResource("Gradient_kbh2q")
+
+[sub_resource type="Gradient" id="Gradient_asp03"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0.8509804, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xx6dy"]
+gradient = SubResource("Gradient_asp03")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g4qrr"]
 particles_animation = true
@@ -133,23 +149,74 @@ offset_bottom = 720.0
 texture = ExtResource("3_cy1ba")
 metadata/_edit_lock_ = true
 
-[node name="Sub_Menus" type="HBoxContainer" parent="Combat/Background_Image" unique_id=2138415245]
+[node name="Stat_Panels" type="HBoxContainer" parent="Combat/Background_Image" unique_id=1816558411]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -384.0
-offset_top = -156.0
-offset_right = 384.0
-offset_bottom = -28.0
+offset_left = -383.0
+offset_top = -240.0
+offset_right = 385.0
+offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 2
 
-[node name="HP_Bar" type="NinePatchRect" parent="Combat/Background_Image/Sub_Menus" unique_id=532769296]
-custom_minimum_size = Vector2(32, 128)
+[node name="Player_Panel" type="NinePatchRect" parent="Combat/Background_Image/Stat_Panels" unique_id=2025273988]
+custom_minimum_size = Vector2(256, 156)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("2_lm3ry")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="Combat/Background_Image/Stat_Panels/Player_Panel" unique_id=653656946]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Vbox" type="VBoxContainer" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer" unique_id=2114418323]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Player1" type="HBoxContainer" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox" unique_id=931688885]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="Panel" type="Panel" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1" unique_id=195526452]
+custom_minimum_size = Vector2(124, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kbh2q")
+
+[node name="Name" type="Label" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/Panel" unique_id=817883615]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 43.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
+text = "The Valor"
+horizontal_alignment = 1
+
+[node name="HP_Bar" type="NinePatchRect" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1" unique_id=532769296]
+custom_minimum_size = Vector2(124, 36)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("2_lm3ry")
@@ -158,7 +225,49 @@ patch_margin_top = 12
 patch_margin_right = 12
 patch_margin_bottom = 12
 
-[node name="MarginContainer" type="MarginContainer" parent="Combat/Background_Image/Sub_Menus/HP_Bar" unique_id=54256002]
+[node name="MarginContainer" type="MarginContainer" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/HP_Bar" unique_id=54256002]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -19.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Health_Prog" type="TextureProgressBar" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/HP_Bar/MarginContainer" unique_id=229549591]
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_g4qrr")
+texture_progress = SubResource("GradientTexture1D_aqiim")
+
+[node name="Combat_Hp_Label" type="Label" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/HP_Bar/MarginContainer" unique_id=1183683340]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
+text = "<hp: xx/xx>"
+horizontal_alignment = 1
+
+[node name="EXP_Bar" type="NinePatchRect" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1" unique_id=830038098]
+custom_minimum_size = Vector2(124, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_lm3ry")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/EXP_Bar" unique_id=1330422423]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,49 +279,79 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Health_Prog" type="TextureProgressBar" parent="Combat/Background_Image/Sub_Menus/HP_Bar/MarginContainer" unique_id=229549591]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/EXP_Bar/MarginContainer" unique_id=2093731681]
 layout_mode = 2
-value = 100.0
-fill_mode = 3
+value = 50.0
 nine_patch_stretch = true
-texture_under = SubResource("GradientTexture1D_g4qrr")
-texture_progress = SubResource("GradientTexture1D_aqiim")
+texture_under = SubResource("GradientTexture1D_nnvvn")
+texture_progress = SubResource("GradientTexture1D_xx6dy")
 
-[node name="Player_Panel" type="NinePatchRect" parent="Combat/Background_Image/Sub_Menus" unique_id=2025273988]
-custom_minimum_size = Vector2(256, 156)
+[node name="EXP" type="Label" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/EXP_Bar/MarginContainer" unique_id=615920400]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 10
+text = "<exp: xx/xx>"
+
+[node name="Player2" type="HBoxContainer" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox" unique_id=1370038334]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="Panel" type="Panel" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player2" unique_id=154018365]
+custom_minimum_size = Vector2(124, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kbh2q")
+
+[node name="Name" type="Label" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player2/Panel" unique_id=311060663]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 43.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
+text = "Bob"
+horizontal_alignment = 1
+
+[node name="HP_Bar" type="NinePatchRect" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player2" unique_id=607963736]
+custom_minimum_size = Vector2(124, 36)
+layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("2_lm3ry")
 patch_margin_left = 12
 patch_margin_top = 12
 patch_margin_right = 12
 patch_margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Combat/Background_Image/Sub_Menus/Player_Panel" unique_id=1443855622]
-custom_minimum_size = Vector2(0, 128)
+[node name="MarginContainer" type="MarginContainer" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player2/HP_Bar" unique_id=901975445]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -53.0
-offset_right = 110.0
-offset_bottom = 53.0
+offset_top = -19.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = -2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
 
-[node name="Name" type="Label" parent="Combat/Background_Image/Sub_Menus/Player_Panel/VBoxContainer" unique_id=729872839]
+[node name="Health_Prog" type="TextureProgressBar" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player2/HP_Bar/MarginContainer" unique_id=1574876221]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 18
-text = "Sir Knight The Valorous"
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_g4qrr")
+texture_progress = SubResource("GradientTexture1D_aqiim")
 
-[node name="Combat_Hp_Label" type="Label" parent="Combat/Background_Image/Sub_Menus/Player_Panel/VBoxContainer" unique_id=1183683340]
+[node name="Combat_Hp_Label" type="Label" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player2/HP_Bar/MarginContainer" unique_id=2051618915]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -220,44 +359,72 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 18
 text = "<hp: xx/xx>"
+horizontal_alignment = 1
 
-[node name="EXP" type="Label" parent="Combat/Background_Image/Sub_Menus/Player_Panel/VBoxContainer" unique_id=615920400]
+[node name="EXP_Bar" type="NinePatchRect" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player2" unique_id=708663983]
+custom_minimum_size = Vector2(124, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 18
-text = "<exp: xx/xx>"
-
-[node name="Armor" type="Label" parent="Combat/Background_Image/Sub_Menus/Player_Panel/VBoxContainer" unique_id=1149913180]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 18
-text = "<armor: xx%>"
-
-[node name="Evasion" type="Label" parent="Combat/Background_Image/Sub_Menus/Player_Panel/VBoxContainer" unique_id=39457636]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 18
-text = "<evasion: xx%>"
-
-[node name="Action_Panel" type="NinePatchRect" parent="Combat/Background_Image/Sub_Menus" unique_id=791549641]
-custom_minimum_size = Vector2(256, 128)
-layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("2_lm3ry")
 patch_margin_left = 12
 patch_margin_top = 12
 patch_margin_right = 12
 patch_margin_bottom = 12
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Combat/Background_Image/Sub_Menus/Action_Panel" unique_id=3264022]
+[node name="MarginContainer" type="MarginContainer" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player2/EXP_Bar" unique_id=822857584]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player2/EXP_Bar/MarginContainer" unique_id=305219090]
+layout_mode = 2
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_nnvvn")
+texture_progress = SubResource("GradientTexture1D_xx6dy")
+
+[node name="EXP" type="Label" parent="Combat/Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player2/EXP_Bar/MarginContainer" unique_id=1444615003]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 10
+text = "<exp: xx/xx>"
+
+[node name="Panel2" type="NinePatchRect" parent="Combat/Background_Image/Stat_Panels" unique_id=945015206]
+custom_minimum_size = Vector2(256, 156)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_lm3ry")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="Action_Panel" type="NinePatchRect" parent="Combat/Background_Image" unique_id=791549641]
+visible = false
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 0
+offset_left = 183.0
+offset_top = 541.0
+offset_right = 439.0
+offset_bottom = 697.0
+texture = ExtResource("2_lm3ry")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Combat/Background_Image/Action_Panel" unique_id=3264022]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 1
 anchors_preset = 8
@@ -272,13 +439,12 @@ offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Actions_Container" type="VBoxContainer" parent="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer" unique_id=175060115]
-visible = false
+[node name="Actions_Container" type="VBoxContainer" parent="Combat/Background_Image/Action_Panel/ScrollContainer" unique_id=175060115]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="action_button" type="TextureButton" parent="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container" unique_id=767503107]
+[node name="action_button" type="TextureButton" parent="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container" unique_id=767503107]
 custom_minimum_size = Vector2(220, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -290,7 +456,7 @@ texture_normal = ExtResource("4_aqiim")
 texture_pressed = ExtResource("6_cy1ba")
 texture_hover = ExtResource("7_wpely")
 
-[node name="Label" type="Label" parent="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button" unique_id=1216042351]
+[node name="Label" type="Label" parent="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button" unique_id=1216042351]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -310,7 +476,7 @@ theme_override_constants/outline_size = 6
 text = "Attack"
 horizontal_alignment = 1
 
-[node name="action_button2" type="TextureButton" parent="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container" unique_id=1568677157]
+[node name="action_button2" type="TextureButton" parent="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container" unique_id=1568677157]
 custom_minimum_size = Vector2(220, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -321,7 +487,7 @@ texture_pressed = ExtResource("6_cy1ba")
 texture_hover = ExtResource("7_wpely")
 texture_disabled = ExtResource("6_cy1ba")
 
-[node name="Label" type="Label" parent="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button2" unique_id=1232128544]
+[node name="Label" type="Label" parent="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button2" unique_id=1232128544]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -340,7 +506,7 @@ theme_override_constants/outline_size = 6
 text = "Heal - 3 left"
 horizontal_alignment = 1
 
-[node name="action_button3" type="TextureButton" parent="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container" unique_id=132148017]
+[node name="action_button3" type="TextureButton" parent="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container" unique_id=132148017]
 custom_minimum_size = Vector2(220, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -350,7 +516,7 @@ texture_normal = ExtResource("4_aqiim")
 texture_pressed = ExtResource("6_cy1ba")
 texture_hover = ExtResource("7_wpely")
 
-[node name="Label" type="Label" parent="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button3" unique_id=209290052]
+[node name="Label" type="Label" parent="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button3" unique_id=209290052]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -369,7 +535,7 @@ theme_override_constants/outline_size = 6
 text = "Attack All"
 horizontal_alignment = 1
 
-[node name="action_button4" type="TextureButton" parent="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container" unique_id=1323769179]
+[node name="action_button4" type="TextureButton" parent="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container" unique_id=1323769179]
 custom_minimum_size = Vector2(220, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -379,7 +545,7 @@ texture_normal = ExtResource("4_aqiim")
 texture_pressed = ExtResource("6_cy1ba")
 texture_hover = ExtResource("7_wpely")
 
-[node name="Label" type="Label" parent="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button4" unique_id=641555554]
+[node name="Label" type="Label" parent="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button4" unique_id=641555554]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -398,7 +564,7 @@ theme_override_constants/outline_size = 6
 text = "Run Away"
 horizontal_alignment = 1
 
-[node name="action_button5" type="TextureButton" parent="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container" unique_id=1777021172]
+[node name="action_button5" type="TextureButton" parent="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container" unique_id=1777021172]
 custom_minimum_size = Vector2(220, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -408,7 +574,7 @@ texture_normal = ExtResource("4_aqiim")
 texture_pressed = ExtResource("6_cy1ba")
 texture_hover = ExtResource("7_wpely")
 
-[node name="Label" type="Label" parent="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button5" unique_id=1426111090]
+[node name="Label" type="Label" parent="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button5" unique_id=1426111090]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -427,52 +593,8 @@ theme_override_constants/outline_size = 6
 text = "All In"
 horizontal_alignment = 1
 
-[node name="action_button_test" parent="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container" unique_id=288203476 instance=ExtResource("8_nnvvn")]
+[node name="action_button_test" parent="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container" unique_id=288203476 instance=ExtResource("8_nnvvn")]
 layout_mode = 2
-
-[node name="Enemy_Panel" type="NinePatchRect" parent="Combat/Background_Image/Sub_Menus" unique_id=1817255766]
-custom_minimum_size = Vector2(256, 128)
-layout_mode = 2
-texture = ExtResource("2_lm3ry")
-patch_margin_left = 12
-patch_margin_top = 12
-patch_margin_right = 12
-patch_margin_bottom = 12
-
-[node name="V" type="VBoxContainer" parent="Combat/Background_Image/Sub_Menus/Enemy_Panel" unique_id=1337266882]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -53.0
-offset_right = 110.0
-offset_bottom = 53.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 0
-
-[node name="Label1" type="Label" parent="Combat/Background_Image/Sub_Menus/Enemy_Panel/V" unique_id=1065290480]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-
-[node name="Label2" type="Label" parent="Combat/Background_Image/Sub_Menus/Enemy_Panel/V" unique_id=1206493730]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-
-[node name="Label3" type="Label" parent="Combat/Background_Image/Sub_Menus/Enemy_Panel/V" unique_id=230761597]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-
-[node name="Label4" type="Label" parent="Combat/Background_Image/Sub_Menus/Enemy_Panel/V" unique_id=1994928681]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-
-[node name="Label5" type="Label" parent="Combat/Background_Image/Sub_Menus/Enemy_Panel/V" unique_id=863757951]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
 
 [node name="Enemy_Sprites" type="HBoxContainer" parent="Combat/Background_Image" unique_id=1266792812]
 layout_mode = 0
@@ -568,6 +690,11 @@ text = "Player Turn"
 libraries/ = SubResource("AnimationLibrary_kbh2q")
 autoplay = &"RESET"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Combat/Background_Image" unique_id=82444388]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="GameOver" type="CanvasLayer" parent="Combat" unique_id=1195418730]
 process_mode = 3
 visible = false
@@ -658,11 +785,11 @@ stream = ExtResource("10_s7a1o")
 volume_db = -6.0
 bus = &"SFX"
 
-[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button" to="Combat" method="_on_action_button_pressed"]
-[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button2" to="Combat" method="_on_action_button_2_pressed"]
-[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button3" to="Combat" method="_on_action_button_3_pressed"]
-[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button4" to="Combat" method="_on_action_button_4_pressed"]
-[connection signal="pressed" from="Combat/Background_Image/Sub_Menus/Action_Panel/ScrollContainer/Actions_Container/action_button5" to="Combat" method="_on_action_button_5_pressed"]
+[connection signal="pressed" from="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button" to="Combat" method="_on_action_button_pressed"]
+[connection signal="pressed" from="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button2" to="Combat" method="_on_action_button_2_pressed"]
+[connection signal="pressed" from="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button3" to="Combat" method="_on_action_button_3_pressed"]
+[connection signal="pressed" from="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button4" to="Combat" method="_on_action_button_4_pressed"]
+[connection signal="pressed" from="Combat/Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button5" to="Combat" method="_on_action_button_5_pressed"]
 [connection signal="animation_finished" from="Combat/Background_Image/Player/Player_Sprite" to="Combat" method="_on_player_sprite_animation_finished"]
 [connection signal="pressed" from="Combat/GameOver/ColorRect/VBoxContainer/GameOverButton" to="." method="_on_button_pressed"]
 [connection signal="visibility_changed" from="Combat/Reward" to="Combat" method="_on_reward_visibility_changed"]

@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" format=3 uid="uid://bmocstmpouh43"]
 
-[ext_resource type="Texture2D" uid="uid://bo2a5ylwpnlf7" path="res://Assets/tile_assets/dg4.png" id="1_5aejv"]
+[ext_resource type="Texture2D" uid="uid://bo2a5ylwpnlf7" path="res://Assets/tile_assets/ruins/d_floors.png" id="1_5aejv"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_5aejv"]
 tile_data = PackedInt32Array(131072, 589824, 9, 196608, 196608, 9, 262144, 393216, 9, 327680, 196608, 9, 1, 983040, 15, 65537, 983040, 15, 131073, 196608, 9, 327681, 327680, 9, 2, 983040, 15, 65538, 983040, 15, 131074, 131072, 8, 327682, 589824, 9, 393218, 393216, 9, 3, 983040, 15, 65539, 983040, 15, 131075, 393216, 10, 327683, 589824, 9, 393219, 65536, 13, 4, 983040, 15, 65540, 983040, 15, 131076, 327680, 9, 327684, 196608, 9, 131077, 655360, 9, 196613, 327680, 9, 262149, 327680, 9, 327685, 327680, 9)
