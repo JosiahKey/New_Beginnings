@@ -38,20 +38,22 @@ var equipment_data = {
 	"Feet": 0,
 }
 
-var abilities_data = {
-	10001: { "Ability_rarity": "common", 
-	"Ability_name": "attack_common", 
-	"Type": "Single_attack", 
-	"Damage_min_flat": 0.0, 
-	"Damage_max_flat": 0.0, 
-	"Accuracy_flat": 100.0, 
-	"Evasion_flat": 0, 
-	"Hp_flat": 0, 
-	"PDR_flat": 20, 
-	"Strength_flat": 0, 
-	"Speed_flat": 0.0 
-	},
-}
+### REVIEW LATER: early (April 2026) draft of abilities. The live version is the
+### AbilitiesData autoload; this draft has ideas it doesn't, such as flat stat buffs.
+#var abilities_data = {
+#	10001: { "Ability_rarity": "common",
+#	"Ability_name": "attack_common",
+#	"Type": "Single_attack",
+#	"Damage_min_flat": 0.0,
+#	"Damage_max_flat": 0.0,
+#	"Accuracy_flat": 100.0,
+#	"Evasion_flat": 0,
+#	"Hp_flat": 0,
+#	"PDR_flat": 20,
+#	"Strength_flat": 0,
+#	"Speed_flat": 0.0
+#	},
+#}
 
 func _ready() -> void:
 	_load_inv_data()

@@ -5,7 +5,6 @@ extends Node2D
 @onready var enemy_res := preload("res://Scenes/Templates/Enemy.tscn")
 var action_queue = []
 var selected_enemy: Control
-var selected_mult_enemies: Array[Control]
 var combat_finished = false
 var deleted_item_texture: Texture = null
 
@@ -47,9 +46,6 @@ func pop_and_requeue(_combatant: String = ""):
 		action_queue.pop_front().call()
 		enqueue(action)
 
-func clear():
-	action_queue.clear()
-
 func sort_descending(a, b):
 	if a[0] == "player" and a[1] == b[1]:
 		return true
@@ -81,7 +77,6 @@ func generate_combatants():
 	var new_node := enemy_res.instantiate()
 	var enemy_stats = GameData.generate_enemy()
 	var max_enemies = GameData.biome_data[GameState.biome][enemy_stats["enemy_name"]]
-	randomize()
 	var rand = 0
 	if max_enemies == 1:
 		rand = 1
@@ -164,7 +159,6 @@ func roll_to_buff(ability: Dictionary) -> int:
 		ceili(PlayerData.get_total_hp() * (ability["Hp_change_multi"] + 0.05)))
 
 func roll_to_hit(ability: Dictionary) -> bool:
-	randomize()
 	var adjusted_accuracy = PlayerData.stat_data["Accuracy"] + ability["Accuracy_flat"]
 	var roll: int = randi_range(0,100)
 	if roll >= adjusted_accuracy:
@@ -173,7 +167,6 @@ func roll_to_hit(ability: Dictionary) -> bool:
 		return true
 
 func roll_damage(ability: Dictionary) -> int:
-	randomize()
 	var damage_min = PlayerData.get_min_damage()
 	var damage_max = PlayerData.get_max_damage()
 	if ability["Damage_min_flat"] != 0:

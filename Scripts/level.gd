@@ -8,7 +8,6 @@ extends Node2D
 func _ready() -> void:
 	if biome != "":
 		GameState.biome = biome
-	randomize()
 	var all_spawns = spawns.get_children()
 	var random_spawn = all_spawns[randi()% all_spawns.size()]
 	player.global_position = random_spawn.get_global_position()

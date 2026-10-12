@@ -23,7 +23,6 @@ func _on_confirm_reward_pressed() -> void:
 				if PlayerData.inv_data[i]["Item"] == 0:
 					PlayerData.inv_data[i]["Item"] = btns.get_pressed_button().get_parent().get_item_id()
 					SignalBus.item_collected.emit()
-					SignalBus.item_added.emit()
 					break
 		get_tree().paused = false
 		queue_free()

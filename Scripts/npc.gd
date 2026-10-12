@@ -1,10 +1,8 @@
 extends Area2D
 
-@onready var sprite_ref := $AnimatedSprite
 @export var rarity: String = ""
 @export var type: String = ""
 @export var quantity: int = 0
-const TYPES = ["Weapon", "Armor", "Jewelry"]
 var in_range: bool = false
 var collected: bool = false
 

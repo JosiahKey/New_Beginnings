@@ -10,7 +10,6 @@ var velocity = Vector2(0,0)
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	label.text = str(int(amount))
-	randomize()
 	var side_mov = randi() %81 -40
 	velocity = Vector2(side_mov, 35)
 	

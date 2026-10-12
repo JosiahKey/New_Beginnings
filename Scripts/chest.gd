@@ -9,7 +9,6 @@ var collected: bool = false
 
 func _ready() -> void:
 	if type == "":
-		randomize()
 		type = TYPES[randi_range(0,TYPES.size()-1)]
 	sprite_ref.texture = load("res://Assets/tile_assets/" + type + "_chest.png")
 

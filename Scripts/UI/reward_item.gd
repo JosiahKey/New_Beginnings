@@ -18,6 +18,5 @@ func _on_pressed() -> void:
 			if PlayerData.inv_data[i]["Item"] == 0:
 				PlayerData.inv_data[i]["Item"] = item_id
 				SignalBus.item_collected.emit()
-				SignalBus.item_added.emit()
 				break
 	self.queue_free()

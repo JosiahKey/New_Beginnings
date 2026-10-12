@@ -42,6 +42,3 @@ var abilities_data = {
 	"Hp_change_multi": 0.2,
 	},
 }
-
-func _ready() -> void:
-	pass # Replace with function body.

@@ -1,14 +1,10 @@
 extends Node
 
 var number_of_enemies = 0
-var selected_enemy: Control
 var combatants_data: Dictionary = {
 	"player" : PlayerData.stat_data,
 	#"enemy1" : data generated from enemy.gd init
 }
-
-func _ready() -> void:
-	pass
 
 var reward_data: Array = [0,0] #[exp, amount of loot]
 

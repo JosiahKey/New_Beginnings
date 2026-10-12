@@ -25,19 +25,13 @@ func _physics_process(_delta):
 		# Check for input and set the input direction
 		if Input.is_action_pressed("move_up"):
 			input_direction.y -= 1
-			timer.paused = false
 		if Input.is_action_pressed("move_down"):
 			input_direction.y += 1
-			timer.paused = false
 		if Input.is_action_pressed("move_left"):
 			input_direction.x -= 1
-			timer.paused = false
 		if Input.is_action_pressed("move_right"):
 			input_direction.x += 1
-			timer.paused = false
-		else:
-			timer.paused = false
-		
+
 		#Flip Sprite
 		if input_direction.x > 0 or input_direction.y > 0:
 			player_sprite.flip_h = false
@@ -49,7 +43,8 @@ func _physics_process(_delta):
 			player_sprite.play("idle")
 			timer.paused = true
 		else:
-			
+			#encounter timer only counts down while moving
+			timer.paused = false
 			player_sprite.play("run")
 			if get_node("walk").playing == false:
 				get_node("walk").playing = true
@@ -85,7 +80,6 @@ func update_highlight_visibility(direction: Vector2):
 		u_highlight.visible = true  # Up
 
 func _on_encounter_timeout() -> void:
-	randomize()
 	timer.wait_time = randf_range(5.0, 10.0)
 	timer.paused = true
 	AudioManager.change_song_to_combat("pokemon")
@@ -94,6 +88,5 @@ func _on_encounter_timeout() -> void:
 	SignalBus.enemy_encountered.emit()
 
 func pause_player():
-	randomize()
 	timer.wait_time = randf_range(6.0, 10.0)
 	timer.paused = true

@@ -11,7 +11,6 @@ var dead_flag = false
 var action_points = 0
 
 func _ready() -> void:
-	SignalBus.connect("start_enemy_turn", Callable(self, "ready_enemy_turn"))
 	SignalBus.num_enemies_changed.emit()
 	
 	sprite = get_node("Enemy_Sprite")
@@ -54,7 +53,6 @@ func enemy_action(action:String):
 				sprite.play("attack")
 				await get_tree().create_timer(0.5).timeout
 				if roll_stat("Accuracy") == true:
-					randomize()
 					SignalBus.hit_player.emit(randi_range(CombatData.combatants_data[name]["Damage_min"],CombatData.combatants_data[name]["Damage_max"]))
 				else:
 					SignalBus.miss_player.emit()
@@ -63,7 +61,6 @@ func enemy_action(action:String):
 	SignalBus.turn_finished.emit()
 
 func roll_stat(stat: String) -> bool:
-	randomize()
 	var roll: int = randi_range(1,100)
 	if roll <= CombatData.combatants_data[name][stat]:
 		return true
@@ -71,7 +68,6 @@ func roll_stat(stat: String) -> bool:
 		return false
 
 func on_hit(damage):
-	print("enemy_onhit called")
 	if roll_stat("Evasion"):
 		var text = floating_text.instantiate()
 		text.amount = "Evaded"
@@ -117,9 +113,6 @@ func on_miss(_damage):
 	text.type = "miss"
 	sprite.add_child(text)
 	$enemy_miss.playing = true
-
-func _on_enemy_sprite_animation_finished() -> void:
-		sprite.play("default")
 
 func _on_button_pressed() -> void:
 	SignalBus.enemy_selected.emit(self)

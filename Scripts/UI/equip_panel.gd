@@ -7,13 +7,6 @@ func _ready() -> void:
 	SignalBus.connect("highlight_slot", Callable(self, "highlight_slot"))
 	SignalBus.connect("unhighlight_slot", Callable(self, "unhighlight_slot"))
 	SignalBus.connect("player_died", Callable(self, "delete_random_item"))
-	PlayerData.stat_data["Total_equipped_weight"] = 0
-	PlayerData.stat_data["Total_equipped_damage_min"] = 0
-	PlayerData.stat_data["Total_equipped_damage_max"] = 0
-	PlayerData.stat_data["Bonus_hp"] = 0
-	PlayerData.stat_data["Accuracy"] = 0
-	PlayerData.stat_data["Evasion"] = 0
-	PlayerData.stat_data["PDR"] = 0
 	_update_equipped_items()
 	_update_equipped_stats()
 
@@ -63,6 +56,9 @@ func _update_equipped_stats():
 			PlayerData.stat_data["Total_equipped_damage_max"] += GameData.item_data[
 									PlayerData.equipment_data[i]]["Damage_max"]
 	
+	### REVIEW LATER: these checks currently do nothing ("if 0, set to 0").
+	### Idea: give a minimum damage when unarmed, since right now an unarmed player
+	### deals 0 weapon damage (only the strength bonus applies).
 	#if weapon has no damage
 	if PlayerData.stat_data["Total_equipped_damage_min"] == 0:
 		PlayerData.stat_data["Total_equipped_damage_min"] = 0
@@ -90,7 +86,6 @@ func delete_random_item():
 		if PlayerData.equipment_data[k] != 0:
 			equipped_items.append(k)
 	if equipped_items.size()-1 >= 0:
-		randomize()
 		var i = randi_range(0, equipped_items.size()-1)
 		PlayerData.equipment_data[equipped_items[i]] = 0
 		_update_equipped_items()

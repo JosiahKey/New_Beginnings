@@ -4,10 +4,7 @@ extends CanvasLayer
 @onready var hp_bar: TextureProgressBar = $Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/HP_Bar/MarginContainer/Health_Prog
 @onready var exp_label: Label = $Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/EXP_Bar/MarginContainer/EXP
 @onready var hp_label: Label = $Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/HP_Bar/MarginContainer/Combat_Hp_Label
-@onready var player_spr: AnimatedSprite2D = $Background_Image/Player/Player_Sprite
-@onready var emitter: GPUParticles2D = $Background_Image/Player/Hit_Indicator
 @onready var actions_container := $Background_Image/Action_Panel
-@onready var floating_text := preload("res://Scenes/UI/floating_text.tscn")
 @onready var enemy_sprites_container = $Background_Image/Enemy_Sprites
 @onready var banner_anim := $Background_Image/Turn_Banner/AnimationPlayer
 @onready var banner_label := $Background_Image/Turn_Banner/Label
@@ -16,9 +13,6 @@ extends CanvasLayer
 @onready var action3 = $Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button3
 @onready var action4 = $Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button4
 @onready var action5 = $Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button5
-
-var players_turn: bool = false
-var action_points = PlayerData.get_total_speed()
 
 var num_of_heals = 2
 
@@ -63,7 +57,6 @@ func toggle_action_ui(combatant: String = ""):
 	if combatant == "Player":
 		if enemy_sprites_container.get_child_count() != 0:
 			await get_tree().create_timer(0.5).timeout
-			players_turn = true
 			actions_container.visible = true
 			banner_label.text = "Player Turn"
 			banner_anim.play("fadeout")
@@ -83,10 +76,6 @@ func select_enemy(enemy: Control):
 	enemy.get_node("Enemy_Hp/Button/Container/Selector").visible = true
 
 func _on_action_button_pressed() -> void:
-	#get_node("select").playing = true
-	#$Background_Image/Player.player_attack_action()
-	#actions_container.visible = false
-	#players_turn = false
 	SignalBus.action_button_pressed.emit("")
 	SignalBus.player_action_selected.emit(AbilitiesData.abilities_data[10001])
 
@@ -94,20 +83,12 @@ func _on_action_button_2_pressed() -> void:
 	if num_of_heals >= 1:
 		num_of_heals -= 1
 		heal_label.text = "Heal - " + str(num_of_heals) + " left"
-		#get_node("select").playing = true
-		#$Background_Image/Player.player_heal_action()
-		#actions_container.visible = false
-		#players_turn = false
 		SignalBus.action_button_pressed.emit("")
 		SignalBus.player_action_selected.emit(AbilitiesData.abilities_data[10004])
 	if num_of_heals <= 0:
 		action2.disabled = true
 
 func _on_action_button_3_pressed() -> void:
-	#get_node("select").playing = true
-	#$Background_Image/Player.player_aoe_action()
-	#actions_container.visible = false
-	#players_turn = false
 	SignalBus.action_button_pressed.emit("")
 	SignalBus.player_action_selected.emit(AbilitiesData.abilities_data[10002])
 
@@ -115,12 +96,7 @@ func _on_action_button_4_pressed() -> void:
 	get_node("select").playing = true
 	$Background_Image/Player.player_run_action()
 	actions_container.visible = false
-	players_turn = false
 
 func _on_action_button_5_pressed() -> void:
-	#get_node("select").playing = true
-	#$Background_Image/Player.player_all_in_action()
-	#actions_container.visible = false
-	#players_turn = false
 	SignalBus.action_button_pressed.emit("")
 	SignalBus.player_action_selected.emit(AbilitiesData.abilities_data[10003])
