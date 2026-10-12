@@ -17,7 +17,7 @@ var abilities_data = {
 	"Damage_min_flat": 0, 
 	"Damage_scaling_stat": "",
 	"Stat_damage_multiplier" : 0.0,
-	"Final_damage_multiplier": 0.3, 
+	"Final_damage_multiplier": 0.333,
 	"Accuracy_flat": 5,
 	"Hp_change_multi": 0,
 	},

@@ -6,7 +6,8 @@ func _ready() -> void:
 	SignalBus.connect("reward_generated", Callable(self, "generate_reward"))
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debuggenerateitem"):
+	#debug key (G): only works in the editor and debug exports, not release builds
+	if OS.is_debug_build() and event.is_action_pressed("debuggenerateitem"):
 		generate_item("","rare","")
 
 func generate_reward(type: String = "", rarity: String = "", slot: String = ""):

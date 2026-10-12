@@ -102,6 +102,10 @@ func _load_inv_data():
 		for k in inv_data.keys():
 			inv_data[k]["Item"] = int(str(inv_data[k]["Item"]))
 
+### REVIEW LATER: save system unfinished; this is never called. inv_data only holds
+### item IDs. Item stats live in GameData.item_data, which isn't saved, so saving
+### this alone would load "ghost" IDs next launch: slots look empty but stay
+### occupied. A full save also needs item_data, equipment_data and stat_data.
 func _save_inv_data():
 	var inv_data_file = FileAccess.open("user://inv_data.json", FileAccess.WRITE)
 	var inv_data_json = JSON.stringify(inv_data)

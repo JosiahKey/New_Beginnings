@@ -176,7 +176,7 @@ func roll_damage(ability: Dictionary) -> int:
 		damage_max += ceili(PlayerData.get_total_stat(ability["Damage_scaling_stat"]) * ability["Stat_damage_multiplier"])
 	if ability["Final_damage_multiplier"] != 1:
 		damage_min = ceili(damage_min * ability["Final_damage_multiplier"])
-		damage_max = ceili(damage_min * ability["Final_damage_multiplier"])
+		damage_max = ceili(damage_max * ability["Final_damage_multiplier"])
 	return randi_range(damage_min, damage_max)
 #####################
 
