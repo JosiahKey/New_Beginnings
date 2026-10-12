@@ -1,3 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Godot editor temp files
+*.tmp
+
+# Local Claude Code instructions
+CLAUDE.md
