@@ -79,3 +79,7 @@ docs/      Design document and media
 - Music: Braxton
 - Font: [Jeti on DaFont](https://www.dafont.com/jeti.d1589)
 - README and design document written with help from [Claude](https://claude.ai) by Anthropic
+
+## License
+
+Copyright © 2025–2026 Josiah Key. All rights reserved. The source is public for viewing and evaluation; see [LICENSE](LICENSE). Third-party assets belong to their creators listed above.
