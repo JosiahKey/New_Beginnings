@@ -14,6 +14,8 @@ func _process(_delta: float) -> void:
 	if music.playing == false and GameState.state == "":
 		music.playing = true
 
+### REVIEW LATER: unused hook for per-area music (e.g. a different track for caves).
+### Only one exploration track exists so far (the "untitled" node plays exploration.wav).
 func change_precombat_song(song: String):
 	get_node(current_song).playing = false
 	music = get_node(song)
@@ -36,6 +38,8 @@ func change_to_precombat_song():
 func pause():
 	get_node(current_song).playing = false
 
+### REVIEW LATER: unused partner of pause(); returning from combat uses
+### change_to_precombat_song(), and _process() restarts stopped music outside combat.
 func resume():
 	get_node(current_song).playing = true
 

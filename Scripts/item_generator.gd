@@ -1,13 +1,13 @@
 extends Node2D
 
-#the item genreation below is(should be) totally static and could be 
+### REVIEW LATER: the item genreation below is(should be) totally static and could be 
 # in any script file just testing it here for now
 func _ready() -> void:
-	SignalBus.connect("item_generated", Callable(self, "generate_item"))
 	SignalBus.connect("reward_generated", Callable(self, "generate_reward"))
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debuggenerateitem"):
+	#debug key (G): only works in the editor and debug exports, not release builds
+	if OS.is_debug_build() and event.is_action_pressed("debuggenerateitem"):
 		generate_item("","rare","")
 
 func generate_reward(type: String = "", rarity: String = "", slot: String = ""):
@@ -24,7 +24,6 @@ func generate_item(type: String = "", rarity: String = "", slot: String = ""):
 			if PlayerData.inv_data[i]["Item"] == 0:
 				PlayerData.inv_data[i]["Item"] = item_id
 				SignalBus.item_collected.emit()
-				SignalBus.item_added.emit()
 				break
 
 func ItemGeneration(type: String = "", rarity: String = "", slot: String = "") -> Dictionary:
@@ -48,7 +47,6 @@ func ItemDetermineType(type: String = "", slot: String = "") -> String:
 	var new_item_type: String
 	var item_types: Array = GameData.base_item_data.keys()
 	if type == "" and slot == "":
-		randomize()
 		new_item_type = item_types[randi() % item_types.size()]
 		return new_item_type
 	elif slot != "":#slot specified
@@ -56,7 +54,6 @@ func ItemDetermineType(type: String = "", slot: String = "") -> String:
 		for i in GameData.base_item_data.keys():
 			if GameData.base_item_data[i]["equipmentSlot"] == slot:
 				specified_item_slot.append(i)
-		randomize()
 		new_item_type = specified_item_slot[randi() % specified_item_slot.size()]
 		return new_item_type
 	else:#type specified, slot not specified
@@ -64,7 +61,6 @@ func ItemDetermineType(type: String = "", slot: String = "") -> String:
 		for i in GameData.base_item_data.keys():
 			if GameData.base_item_data[i]["Type"] == type:
 				specified_item_type.append(i)
-		randomize()
 		new_item_type = specified_item_type[randi() % specified_item_type.size()]
 		return new_item_type
 
@@ -73,7 +69,6 @@ func ItemDetermineRarity(rarity: String = "") -> String:
 		return rarity
 	var new_item_rarity: String
 	var item_rarities: Array = GameData.item_rarity_ditribution.keys()
-	randomize()
 	var rarity_roll: float = randf_range(0.0, 100)
 	for i in item_rarities:
 		if rarity_roll <= GameData.item_rarity_ditribution[i]:
@@ -103,7 +98,6 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 				item_stats.append(i)
 	
 	var total_number_of_stats = item_stats.size()
-	randomize()
 	if(item["item_rarity"] == "common"): minimum_stats = 1
 	if(item["item_rarity"] == "uncommon"): minimum_stats = randi_range(1,2)
 	if(item["item_rarity"] == "rare"): minimum_stats = randi_range(2,3)
@@ -112,7 +106,6 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 	if(item["Type"] == "Weapon"): 
 			minimum_stats -= 1
 	while(total_number_of_stats > minimum_stats):
-		randomize()
 		var random_stat = item_stats[randi_range(0, item_stats.size()-1)]
 		total_number_of_stats -= 1
 		item[random_stat] = 0
@@ -121,7 +114,6 @@ func RandomizeStats(item: Dictionary) -> Dictionary:
 
 func ItemDetermineStats(item_id, item_rarity, stat) -> float:
 	var stat_value: int
-	randomize()
 	if GameData.base_item_data[item_id]["Type"] == "Jewelry" and stat == "Accuracy":
 		stat_value = randi_range(2,6) * int(GameData.base_item_data[item_id][stat])
 	elif GameData.item_mitigation_stats.has(stat):

@@ -49,6 +49,7 @@ func set_tooltips():
 	$M/V/Stat_Grid/PDR_Text/stat_label.tooltip_text = "Armor reduces all incoming\ndamage by this percentage"
 	$M/V/Stat_Grid/Strength_Text/stat_label.tooltip_text = "Strength increases your minimum and\nmaximum damage by 10 per point"
 	$M/V/Stat_Grid/Speed_Text/stat_label.tooltip_text = "Speed determines how many\ntimes you attack and which\ncombatant strikes first.\nYour Speed must be 4 higher\nthan your target to attack twice."
+	### REVIEW LATER: Weight stat not implemented yet (also see equip_panel.gd)
 	$M/V/Stat_Grid/Weight_Text/stat_label.tooltip_text = "NOT IMPLEMENTED YET\nit will restrict your speed\nand be mitigated by strength"
 	$M/V/Stat_Grid/Damage_Text/stat_label.tooltip_text = "When you attack you will deal damage within this range"
 	$M/V/H/Exp_Text/stat_label.tooltip_text = "Experience Points are needed to level\nup and gain additional stats"

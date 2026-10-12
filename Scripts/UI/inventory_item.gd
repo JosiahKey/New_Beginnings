@@ -1,5 +1,5 @@
 extends TextureRect
-#this is sperate from equipment item so that we can deal with consumables and stackables later
+### REVIEW LATER: this is sperate from equipment item so that we can deal with consumables and stackables later
 var highlighted_item_slot := ""
 var current_slot = ""
 
@@ -73,6 +73,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and not event.is_pressed():
 		if highlighted_item_slot != "":
 			SignalBus.unhighlight_slot.emit(highlighted_item_slot)
+	### REVIEW LATER: ctrl + LMB auto-equip, unfinished (the "Autoequip" input action exists in project settings)
 	#if event.is_action_released("Autoequip"):
 		#if current_slot != "":
 			#var origin_item_id = PlayerData.inv_data[current_slot]["Item"]

@@ -2,7 +2,7 @@ extends Node
 
 var inv_data = {}
 
-#should have getters and setters for all the stats so that the 
+### REVIEW LATER: should have getters and setters for all the stats so that the
 #functions don't have to guess how to handle the stats
 var stat_data = {
 	"Natural_hp": 200,
@@ -38,20 +38,22 @@ var equipment_data = {
 	"Feet": 0,
 }
 
-var abilities_data = {
-	10001: { "Ability_rarity": "common", 
-	"Ability_name": "attack_common", 
-	"Type": "Single_attack", 
-	"Damage_min_flat": 0.0, 
-	"Damage_max_flat": 0.0, 
-	"Accuracy_flat": 100.0, 
-	"Evasion_flat": 0, 
-	"Hp_flat": 0, 
-	"PDR_flat": 20, 
-	"Strength_flat": 0, 
-	"Speed_flat": 0.0 
-	},
-}
+### REVIEW LATER: early (April 2026) draft of abilities. The live version is the
+### AbilitiesData autoload; this draft has ideas it doesn't, such as flat stat buffs.
+#var abilities_data = {
+#	10001: { "Ability_rarity": "common",
+#	"Ability_name": "attack_common",
+#	"Type": "Single_attack",
+#	"Damage_min_flat": 0.0,
+#	"Damage_max_flat": 0.0,
+#	"Accuracy_flat": 100.0,
+#	"Evasion_flat": 0,
+#	"Hp_flat": 0,
+#	"PDR_flat": 20,
+#	"Strength_flat": 0,
+#	"Speed_flat": 0.0
+#	},
+#}
 
 func _ready() -> void:
 	_load_inv_data()
@@ -100,6 +102,10 @@ func _load_inv_data():
 		for k in inv_data.keys():
 			inv_data[k]["Item"] = int(str(inv_data[k]["Item"]))
 
+### REVIEW LATER: save system unfinished; this is never called. inv_data only holds
+### item IDs. Item stats live in GameData.item_data, which isn't saved, so saving
+### this alone would load "ghost" IDs next launch: slots look empty but stay
+### occupied. A full save also needs item_data, equipment_data and stat_data.
 func _save_inv_data():
 	var inv_data_file = FileAccess.open("user://inv_data.json", FileAccess.WRITE)
 	var inv_data_json = JSON.stringify(inv_data)

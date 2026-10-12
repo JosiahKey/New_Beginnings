@@ -1,13 +1,12 @@
 extends Area2D
 
-@onready var sprite_ref := $AnimatedSprite
 @export var rarity: String = ""
 @export var type: String = ""
 @export var quantity: int = 0
-const TYPES = ["Weapon", "Armor", "Jewelry"]
 var in_range: bool = false
 var collected: bool = false
 
+### REVIEW LATER: in-range/interact logic below is duplicated in chest.gd and npc2.gd
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerCursor"):
 		if(!collected):

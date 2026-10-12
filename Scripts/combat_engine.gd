@@ -5,7 +5,6 @@ extends Node2D
 @onready var enemy_res := preload("res://Scenes/Templates/Enemy.tscn")
 var action_queue = []
 var selected_enemy: Control
-var selected_mult_enemies: Array[Control]
 var combat_finished = false
 var deleted_item_texture: Texture = null
 
@@ -31,7 +30,7 @@ func _process(_delta: float) -> void:
 			$Combat/GameOver.visible = true
 	if CombatData.number_of_enemies == 0:
 		if !combat_finished:
-			$Combat/Background_Image/Sub_Menus.visible = false
+			$Combat/Background_Image/Action_Panel.visible = false
 			SignalBus.combat_victory.emit(CombatData.reward_data[0],CombatData.reward_data[1])
 			combat_finished = true
 			if(GameState.biome == "Boss"):
@@ -46,9 +45,6 @@ func pop_and_requeue(_combatant: String = ""):
 	if !action_queue.is_empty():
 		action_queue.pop_front().call()
 		enqueue(action)
-
-func clear():
-	action_queue.clear()
 
 func sort_descending(a, b):
 	if a[0] == "player" and a[1] == b[1]:
@@ -81,12 +77,11 @@ func generate_combatants():
 	var new_node := enemy_res.instantiate()
 	var enemy_stats = GameData.generate_enemy()
 	var max_enemies = GameData.biome_data[GameState.biome][enemy_stats["enemy_name"]]
-	randomize()
 	var rand = 0
 	if max_enemies == 1:
 		rand = 1
 	else:
-		rand = max_enemies #randi_range(2,max_enemies)
+		rand = max_enemies #randi_range(2,max_enemies)  # REVIEW LATER: random enemy count disabled; always spawns the max
 	for r in rand:
 		CombatData.add_combatant(enemy_stats)
 		enemies_ref.add_child(new_node.duplicate(), true)
@@ -164,7 +159,6 @@ func roll_to_buff(ability: Dictionary) -> int:
 		ceili(PlayerData.get_total_hp() * (ability["Hp_change_multi"] + 0.05)))
 
 func roll_to_hit(ability: Dictionary) -> bool:
-	randomize()
 	var adjusted_accuracy = PlayerData.stat_data["Accuracy"] + ability["Accuracy_flat"]
 	var roll: int = randi_range(0,100)
 	if roll >= adjusted_accuracy:
@@ -173,7 +167,6 @@ func roll_to_hit(ability: Dictionary) -> bool:
 		return true
 
 func roll_damage(ability: Dictionary) -> int:
-	randomize()
 	var damage_min = PlayerData.get_min_damage()
 	var damage_max = PlayerData.get_max_damage()
 	if ability["Damage_min_flat"] != 0:
@@ -183,7 +176,7 @@ func roll_damage(ability: Dictionary) -> int:
 		damage_max += ceili(PlayerData.get_total_stat(ability["Damage_scaling_stat"]) * ability["Stat_damage_multiplier"])
 	if ability["Final_damage_multiplier"] != 1:
 		damage_min = ceili(damage_min * ability["Final_damage_multiplier"])
-		damage_max = ceili(damage_min * ability["Final_damage_multiplier"])
+		damage_max = ceili(damage_max * ability["Final_damage_multiplier"])
 	return randi_range(damage_min, damage_max)
 #####################
 

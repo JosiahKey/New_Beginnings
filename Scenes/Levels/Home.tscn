@@ -3,7 +3,6 @@
 [ext_resource type="TileSet" uid="uid://dtm3gfoo3dut3" path="res://Resources/tilesets_res/Generic_Tile_Set.tres" id="1_gmux1"]
 [ext_resource type="Script" uid="uid://kyculvdik2sk" path="res://Scenes/Levels/level.gd" id="1_l62pr"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="2_dp85m"]
-[ext_resource type="Script" uid="uid://ii3pnv8pl4gc" path="res://Scripts/player_no_encounters.gd" id="3_dp85m"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="3_uvsdt"]
 [ext_resource type="PackedScene" uid="uid://dfi0ps1qlcfw8" path="res://Scenes/Templates/heal_zone.tscn" id="4_vfw3i"]
 [ext_resource type="PackedScene" uid="uid://cya4pwohwa788" path="res://Scenes/Templates/chest.tscn" id="7_uvsdt"]
@@ -18,7 +17,7 @@ tile_map_data = PackedByteArray("AAD+//n/AQAIAAAAAAD9//n/AQAIAAAAAAD9//r/AQAIAAA
 tile_set = ExtResource("1_gmux1")
 
 [node name="Player" parent="." unique_id=2049836676 instance=ExtResource("2_dp85m")]
-script = ExtResource("3_dp85m")
+random_encounters = false
 
 [node name="overworld" parent="." unique_id=979339752 instance=ExtResource("3_uvsdt")]
 position = Vector2(56, 40)

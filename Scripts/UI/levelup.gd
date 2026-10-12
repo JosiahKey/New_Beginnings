@@ -10,7 +10,8 @@ func levelup():
 	visible = true
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debuglevelup"):
+	#debug key (L): only works in the editor and debug exports, not release builds
+	if OS.is_debug_build() and event.is_action_pressed("debuglevelup"):
 		visible = true
 
 func _on_health_pressed() -> void:

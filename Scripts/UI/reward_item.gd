@@ -1,4 +1,5 @@
 extends MarginContainer
+### REVIEW LATER: lines below (up to _on_pressed) are duplicated in quest_reward_item.gd
 
 @onready var item_icon := $TextureRect
 @onready var item_label := $Label
@@ -18,6 +19,5 @@ func _on_pressed() -> void:
 			if PlayerData.inv_data[i]["Item"] == 0:
 				PlayerData.inv_data[i]["Item"] = item_id
 				SignalBus.item_collected.emit()
-				SignalBus.item_added.emit()
 				break
 	self.queue_free()

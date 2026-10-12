@@ -1,34 +1,22 @@
 extends Node
 #next level to levelmanager
 signal load_area_entered
-#interctable to item generator
-signal item_generated
 #itemgenerator to inventorypanel
 signal item_collected
 #inventorypanel to equippanel
 signal item_equipped
 #equippanel/levelup to statpanel
 signal update_stat_panel
-#itemgenerator to inventory
-signal item_added
 #enemy to combat
 signal hit_player
-#player to enemy
-signal start_enemy_turn
-#enemy to player
-signal end_enemy_turn
 #enemy to combatui
 signal combat_victory
 #enemy_interactable to main
 signal enemy_encountered
-#combatui to main
-signal game_over
 #enemy interactable to scene transition
 signal combat_entered
 #combat to scene transition
 signal combat_exited
-#combatui to combatengine
-signal scene_transition_finished
 #enemy to combat
 signal miss_player
 #combat to levelup
@@ -47,12 +35,8 @@ signal check_for_levelup
 signal turn_start
 #combatant to combat_engine
 signal turn_finished
-#combatant to combat_engine
-signal combat_action
 #enemy to combat_engine
 signal enemy_selected
-#enemy to combatplayer
-signal action_resolved
 #combatplayer to combatui
 signal player_hp_changed
 #enemy_interactable to player
@@ -73,3 +57,9 @@ signal world_map_entered
 signal action_button_pressed
 #action button to combat engine
 signal player_action_selected
+
+### REVIEW LATER: kept during cleanup, currently half-wired
+#emitted by scene_transition when the fade into combat ends, but nothing listens for it yet
+#planned: combat_engine._ready() could await this instead of its fixed 1.2s timer
+#combatui to combatengine
+signal scene_transition_finished

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqkw5054yibx7"]
-
-[ext_resource type="Script" uid="uid://kv54bub1bgd3" path="res://Version_0.0.1/Scripts/main.gd" id="1_pac21"]
-[ext_resource type="PackedScene" uid="uid://bvjgc38125mky" path="res://Version_0.0.1/Scenes/GUI.tscn" id="2_28cn0"]
-
-[node name="Main" type="Node2D"]
-script = ExtResource("1_pac21")
-
-[node name="Stat_Manager" parent="." instance=ExtResource("2_28cn0")]
