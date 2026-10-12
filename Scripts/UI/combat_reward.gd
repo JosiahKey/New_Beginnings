@@ -56,6 +56,7 @@ func check_for_levelup(experience: float = 0.0):
 	await exptween.finished
 	SignalBus.exp_finished.emit()
 
+### REVIEW LATER: duplicated in reward.gd and quest_reward.gd (only the starting row differs)
 func add_reward_item(item_id):
 	var item_name = GameData.item_data[item_id]["item_name"]
 	var new_reward = reward_item.instantiate()

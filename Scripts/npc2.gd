@@ -2,6 +2,8 @@ extends Area2D
 
 var in_range: bool = false
 
+### REVIEW LATER: in-range/interact logic below is duplicated in chest.gd and npc.gd
+### (npc2 is the old-overworld merchant; goes away when the overworlds are deleted)
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerCursor"):
 		in_range = true

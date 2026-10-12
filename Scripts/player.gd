@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+## Untick in the Inspector for safe areas (Home, cave maps) to disable random battles
+@export var random_encounters: bool = true
+
 var speed_factor = 100 + PlayerData.get_total_speed()
 
 @onready var timer = $Encounter
@@ -10,12 +13,12 @@ var speed_factor = 100 + PlayerData.get_total_speed()
 @onready var player_sprite = $AnimatedSprite2D
 
 func _ready():
-	SignalBus.connect("player_paused", Callable(self, "pause_player"))
 	# Hide all highlights initially
 	update_highlight_visibility(Vector2.ZERO)
-	#randomize()
-	timer.wait_time = 2.5#randf_range(5.0, 10.0)
-	timer.start()
+	if random_encounters:
+		SignalBus.connect("player_paused", Callable(self, "pause_player"))
+		timer.wait_time = 2.5#randf_range(5.0, 10.0)  # REVIEW LATER: fixed 2.5s first encounter (test value?)
+		timer.start()
 
 func _physics_process(_delta):
 	speed_factor = 100 + PlayerData.get_total_speed() * 2
@@ -33,18 +36,20 @@ func _physics_process(_delta):
 			input_direction.x += 1
 
 		#Flip Sprite
-		if input_direction.x > 0 or input_direction.y > 0:
+		if input_direction.x > 0:
 			player_sprite.flip_h = false
-		elif input_direction.x < 0 or input_direction.y < 0:
+		elif input_direction.x < 0:
 			player_sprite.flip_h = true
-		
+
 		#Play anime
 		if input_direction == Vector2.ZERO:
 			player_sprite.play("idle")
-			timer.paused = true
+			if random_encounters:
+				timer.paused = true
 		else:
 			#encounter timer only counts down while moving
-			timer.paused = false
+			if random_encounters:
+				timer.paused = false
 			player_sprite.play("run")
 			if get_node("walk").playing == false:
 				get_node("walk").playing = true
@@ -60,6 +65,7 @@ func _physics_process(_delta):
 		move_and_slide()
 
 		# Update highlight visibility based on input direction
+		### REVIEW LATER: direction highlights are disabled; the highlight nodes are always hidden
 		#update_highlight_visibility(input_direction)
 
 # Function to update the visibility of the highlight ColorRects
@@ -80,6 +86,8 @@ func update_highlight_visibility(direction: Vector2):
 		u_highlight.visible = true  # Up
 
 func _on_encounter_timeout() -> void:
+	if not random_encounters:
+		return
 	timer.wait_time = randf_range(5.0, 10.0)
 	timer.paused = true
 	AudioManager.change_song_to_combat("pokemon")

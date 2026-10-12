@@ -2,7 +2,7 @@ extends Node
 
 var inv_data = {}
 
-#should have getters and setters for all the stats so that the 
+### REVIEW LATER: should have getters and setters for all the stats so that the
 #functions don't have to guess how to handle the stats
 var stat_data = {
 	"Natural_hp": 200,

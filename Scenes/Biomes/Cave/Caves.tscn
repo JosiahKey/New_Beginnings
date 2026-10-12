@@ -5,7 +5,6 @@
 [ext_resource type="TileSet" uid="uid://swgql0n62uho" path="res://Resources/tilesets_res/walls_tile_set.tres" id="3_8nbi0"]
 [ext_resource type="TileSet" uid="uid://cbpj5bh0nxwfq" path="res://Resources/tilesets_res/props_tile_set.tres" id="4_3dorj"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="5_fe5oj"]
-[ext_resource type="Script" uid="uid://ii3pnv8pl4gc" path="res://Scripts/player_no_encounters.gd" id="6_fnxtb"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="7_gsg7s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c4gaa"]
@@ -295,7 +294,7 @@ tile_set = ExtResource("4_3dorj")
 
 [node name="Player" parent="." unique_id=1098190489 instance=ExtResource("5_fe5oj")]
 position = Vector2(256, 728)
-script = ExtResource("6_fnxtb")
+random_encounters = false
 
 [node name="Spawns" type="Node2D" parent="." unique_id=22238465]
 position = Vector2(1656, 16)

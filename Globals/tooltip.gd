@@ -63,22 +63,9 @@ func hide_item_popup():
 	%Tooltip.hide()
 
 func clear_text():
-	$CanvasLayer/Tooltip/M/V/Stat1/Stat.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat1/Diff.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat2/Stat.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat2/Diff.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat3/Stat.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat3/Diff.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat4/Stat.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat4/Diff.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat5/Stat.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat5/Diff.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat6/Stat.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat6/Diff.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat7/Stat.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat7/Diff.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat8/Stat.text = ""
-	$CanvasLayer/Tooltip/M/V/Stat8/Diff.text = ""
+	for i in range(1, 9):   #Stat1 to Stat8
+		get_node("CanvasLayer/Tooltip/M/V/Stat%d/Stat" % i).text = ""
+		get_node("CanvasLayer/Tooltip/M/V/Stat%d/Diff" % i).text = ""
 
 func get_name_color(item_rarity: String) -> Color:
 	if(item_rarity == "common"):

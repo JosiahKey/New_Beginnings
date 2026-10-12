@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="4_61q3v"]
 [ext_resource type="TileSet" uid="uid://cr2uaskkow0vp" path="res://Resources/tilesets_res/catacomb_props.tres" id="4_ysbuc"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="6_61q3v"]
-[ext_resource type="Script" uid="uid://ii3pnv8pl4gc" path="res://Scripts/player_no_encounters.gd" id="6_mhb5j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c4gaa"]
 texture = ExtResource("2_ysbuc")
@@ -294,7 +293,7 @@ tile_set = ExtResource("4_ysbuc")
 
 [node name="Player" parent="." unique_id=1098190489 instance=ExtResource("4_61q3v")]
 position = Vector2(400, 272)
-script = ExtResource("6_mhb5j")
+random_encounters = false
 
 [node name="Spawns" type="Node2D" parent="." unique_id=22238465]
 

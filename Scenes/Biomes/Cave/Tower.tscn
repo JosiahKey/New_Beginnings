@@ -5,7 +5,6 @@
 [ext_resource type="TileSet" uid="uid://swgql0n62uho" path="res://Resources/tilesets_res/walls_tile_set.tres" id="3_2ivox"]
 [ext_resource type="TileSet" uid="uid://cbpj5bh0nxwfq" path="res://Resources/tilesets_res/props_tile_set.tres" id="4_cjfjw"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="5_e148c"]
-[ext_resource type="Script" uid="uid://ii3pnv8pl4gc" path="res://Scripts/player_no_encounters.gd" id="6_1sh13"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="7_guwgo"]
 [ext_resource type="Script" uid="uid://brv1crwuhcvju" path="res://Scripts/teleport.gd" id="7_x2ok6"]
 
@@ -30,7 +29,7 @@ tile_set = ExtResource("4_cjfjw")
 
 [node name="Player" parent="." unique_id=1098190489 instance=ExtResource("5_e148c")]
 position = Vector2(-192, -144)
-script = ExtResource("6_1sh13")
+random_encounters = false
 
 [node name="Spawns" type="Node2D" parent="." unique_id=22238465]
 

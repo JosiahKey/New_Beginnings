@@ -12,6 +12,8 @@ func _ready() -> void:
 		type = TYPES[randi_range(0,TYPES.size()-1)]
 	sprite_ref.texture = load("res://Assets/tile_assets/" + type + "_chest.png")
 
+### REVIEW LATER: in-range/interact logic below is duplicated in npc.gd and npc2.gd
+### (could become a shared base script once npc2 is removed with the old overworld)
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerCursor"):
 		if(!collected):

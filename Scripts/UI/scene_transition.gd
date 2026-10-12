@@ -4,7 +4,7 @@ func _ready() -> void:
 	SignalBus.connect('combat_entered', Callable(self, "enter_combat"))
 
 func enter_combat():
-	#$SFX.playing = true
+	#$SFX.playing = true  # REVIEW LATER: transition sound disabled
 	self.visible = true
 	get_tree().paused = true
 	$AnimationPlayer.play('fadeout')

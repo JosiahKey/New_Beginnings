@@ -8,6 +8,7 @@ var ui_iterator = 0
 func _ready() -> void:
 	SignalBus.connect("update_reward_item", Callable(self, "add_reward_item"))
 
+### REVIEW LATER: duplicated in combat_reward.gd and reward.gd
 func add_reward_item(item_id):
 	var item_name = GameData.item_data[item_id]["item_name"]
 	var new_reward = reward_item.instantiate()

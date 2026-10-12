@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 			$Combat/GameOver.visible = true
 	if CombatData.number_of_enemies == 0:
 		if !combat_finished:
-			$Combat/Background_Image/Sub_Menus.visible = false
+			$Combat/Background_Image/Action_Panel.visible = false
 			SignalBus.combat_victory.emit(CombatData.reward_data[0],CombatData.reward_data[1])
 			combat_finished = true
 			if(GameState.biome == "Boss"):
@@ -81,7 +81,7 @@ func generate_combatants():
 	if max_enemies == 1:
 		rand = 1
 	else:
-		rand = max_enemies #randi_range(2,max_enemies)
+		rand = max_enemies #randi_range(2,max_enemies)  # REVIEW LATER: random enemy count disabled; always spawns the max
 	for r in rand:
 		CombatData.add_combatant(enemy_stats)
 		enemies_ref.add_child(new_node.duplicate(), true)

@@ -1,4 +1,5 @@
 extends MarginContainer
+### REVIEW LATER: lines below (up to _on_pressed) are duplicated in quest_reward_item.gd
 
 @onready var item_icon := $TextureRect
 @onready var item_label := $Label

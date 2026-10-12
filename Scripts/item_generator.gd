@@ -1,6 +1,6 @@
 extends Node2D
 
-#the item genreation below is(should be) totally static and could be 
+### REVIEW LATER: the item genreation below is(should be) totally static and could be 
 # in any script file just testing it here for now
 func _ready() -> void:
 	SignalBus.connect("reward_generated", Callable(self, "generate_reward"))
