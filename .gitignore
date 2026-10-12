@@ -2,7 +2,8 @@
 .godot/
 /android/
 
-
+# Godot editor temp files
 *.tmp
-*.md
 
+# Local Claude Code instructions
+CLAUDE.md
