@@ -1,0 +1,10 @@
+1. update project file with
+	[autoload]
+	[display]
+	[global_group]
+	[input]
+	[physics]
+	[rendering]
+2. update dependencies
+	user://inv_data.json
+3. 
