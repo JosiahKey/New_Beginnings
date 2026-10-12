@@ -1,10 +1,83 @@
-1. update project file with
+NEW VERSION RELEASE CHECKLIST
+=============================
+Versions are MAJOR.MINOR.PATCH (e.g. v0.2.0)
+  MINOR (0.2.0) = new content, released from new_version -> main
+  PATCH (0.2.1) = fixes only, released from a fix/ branch off main
+  MAJOR (1.0.0) = game complete, or old saves no longer work
+
+
+1. PROJECT SETTINGS
+   Update the project file (project.godot) with:
 	[autoload]
 	[display]
 	[global_group]
 	[input]
 	[physics]
 	[rendering]
-2. update dependencies
-	user://inv_data.json
-3. 
+   - Every autoload path in [autoload] points to a file that exists
+   - Main scene (run/main_scene) is correct
+
+
+2. DEPENDENCIES
+   - user://inv_data.json
+	The game copies Data/inv_data.json to user:// ONLY if the file doesn't
+	exist yet, and never overwrites it. If Data/inv_data.json changed,
+	delete your local copy so you test the new starting inventory:
+	  %APPDATA%\Godot\app_userdata\New_Beginnings\inv_data.json
+	Note: players who already have the file keep their old one.
+   - Starting items: every item ID in Data/inv_data.json and
+	PlayerData.equipment_data (e.g. Mainhand 66666) exists in
+	GameData.item_data, otherwise it becomes an empty "ghost" slot
+   - Files loaded by name in code (a missing file only shows up at runtime):
+	[ ] Item icons: every "name" in Data/items_data.json has all 5 icons
+	    Assets/item_assets/<name>_common/uncommon/rare/epic/legendary.png
+	[ ] Enemy sprites: every "enemy_name" in Data/enemy_data.json has
+	    Resources/<enemy_name>.tres
+	[ ] Spawn tables: every enemy name in Data/biome_data.json exists in
+	    Data/enemy_data.json, and every biome a level uses exists here
+	[ ] Combat backgrounds: every biome a level uses has
+	    Assets/art_assets/battleback_<Biome>.png (plus Boss)
+	[ ] Chest sprites: Assets/tile_assets/Weapon_chest.png, Armor_chest.png,
+	    Jewelry_chest.png (capital letter, must match chest.gd exactly)
+   - Filename case: exported builds are case-sensitive even though Windows
+	isn't. Watch the Output panel for "case mismatch" warnings.
+
+
+3. BEFORE RELEASE (on new_version)
+   - Search the project for REVIEW LATER and decide if anything must be
+	done for this release
+   - Debug boss trigger in Home: keep or remove for this release?
+   - Merge main into new_version first (picks up any hotfixes)
+   - Run the game in the editor: no red errors in the Output panel
+   - Play-test: Home, every level, combat (all buttons), win, lose,
+	loot, quest reward, inventory drag/drop, equip/unequip, boss
+   - Update README.md and docs/DESIGN.md (features, screenshots/GIFs,
+	controls, design changes)
+   - Commit and push
+
+
+4. RELEASE
+   a. Pick the version number (see top of file)
+   b. Pull request on GitHub: base main <- compare new_version
+	Review "Files changed", then merge
+   c. In GitHub Desktop: switch to main, Fetch, Pull
+   d. Export from main (Project > Export > Windows Desktop):
+	- Export path: NewBeginnings_version_X.Y.Z.exe
+	- File/Product version: X.Y.Z.0
+	- UNCHECK "Export With Debug" (turns off the G/L debug keys)
+   e. Test the EXPORTED game, not just the editor (case-sensitive files,
+	chest sprites, item icons, enemy sprites, music)
+   f. Zip the build
+   g. GitHub > Releases > Draft a new release
+	- Tag: vX.Y.Z on main (create new tag)
+	- Title: New Beginnings vX.Y.Z
+	- Notes: what's new, what's fixed
+	- Attach the zip (don't commit builds to the repo)
+	- Publish
+
+
+5. AFTER RELEASE
+   - Switch back to new_version and merge main into it, so both start
+	the next version from the same point
+   - Hotfix needed? Branch fix/... from main, PR into main, release
+	vX.Y.(Z+1), then merge main back into new_version
