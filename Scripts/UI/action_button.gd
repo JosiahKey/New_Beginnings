@@ -1,7 +1,6 @@
 extends TextureButton
 
 @onready var action_label: Label = $Label
-var abililty: String = "player_action"
 
 func _ready() -> void:
 	pass
