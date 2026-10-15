@@ -45,5 +45,5 @@ position = Vector2(133, -110)
 [node name="Load_Zones" type="Node2D" parent="." unique_id=1721156718]
 
 [node name="next_level" parent="Load_Zones" unique_id=1563065534 instance=ExtResource("3_uvsdt")]
-position = Vector2(71, 39)
+position = Vector2(72, 40)
 world_map = true

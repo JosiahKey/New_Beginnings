@@ -3,15 +3,29 @@
 [ext_resource type="Script" uid="uid://dc8ny1g3qjcij" path="res://Scripts/next_level.gd" id="1_dumyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4tmk"]
-size = Vector2(16, 16)
+size = Vector2(14, 14)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dag31"]
-radius = 1.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6v2rf"]
+size = Vector2(16, 16)
 
 [node name="next_level" type="Area2D" unique_id=1563065534]
 priority = 1
 script = ExtResource("1_dumyq")
 randomizes = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1714621593]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.45490196, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1382273252]
 shape = SubResource("RectangleShape2D_g4tmk")
@@ -19,14 +33,21 @@ shape = SubResource("RectangleShape2D_g4tmk")
 [node name="StaticBody2D" type="StaticBody2D" parent="CollisionShape2D" unique_id=1326958848]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/StaticBody2D" unique_id=490263131]
-shape = SubResource("CircleShape2D_dag31")
+shape = SubResource("RectangleShape2D_6v2rf")
 
-[node name="ColorRect" type="ColorRect" parent="CollisionShape2D/StaticBody2D" unique_id=766873190]
+[node name="ColorRect" type="ColorRect" parent="CollisionShape2D/StaticBody2D" unique_id=941242935]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -8.0
 offset_top = -8.0
 offset_right = 8.0
 offset_bottom = 8.0
-color = Color(0.5176471, 0.14117648, 0.14117648, 1)
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.45762616, 0.07843282, 2.4065375e-08, 1)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

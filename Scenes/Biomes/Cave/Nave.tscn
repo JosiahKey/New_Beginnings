@@ -29,20 +29,20 @@ tile_map_data = PackedByteArray("AAAhALH/AAAcAAEAAAAhALL/AAAcAAIAAAAhALP/AAAcAAM
 tile_set = ExtResource("4_g7jlu")
 
 [node name="Player" parent="." unique_id=1098190489 instance=ExtResource("5_c2f5b")]
-position = Vector2(-88, 432)
-random_encounters = false
+position = Vector2(296, -580)
 
 [node name="Spawns" type="Node2D" parent="." unique_id=22238465]
 
 [node name="Spawn1" type="Marker2D" parent="Spawns" unique_id=787182602]
-position = Vector2(48, 472)
+position = Vector2(867, -591)
+
+[node name="Spawn2" type="Marker2D" parent="Spawns" unique_id=1522672121]
+position = Vector2(144, -594)
 
 [node name="Load_Zones" type="Node2D" parent="." unique_id=2035988635]
 
 [node name="next_level1" parent="Load_Zones" unique_id=58350580 instance=ExtResource("7_rrcy5")]
-position = Vector2(48, 328)
-randomizes = true
+position = Vector2(-119, -602)
 
 [node name="next_level2" parent="Load_Zones" unique_id=1563065534 instance=ExtResource("7_rrcy5")]
-position = Vector2(200, 480)
-randomizes = true
+position = Vector2(1163, -603)

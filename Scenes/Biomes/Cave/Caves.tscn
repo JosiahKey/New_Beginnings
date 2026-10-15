@@ -294,7 +294,6 @@ tile_set = ExtResource("4_3dorj")
 
 [node name="Player" parent="." unique_id=1098190489 instance=ExtResource("5_fe5oj")]
 position = Vector2(-237, 508)
-random_encounters = false
 
 [node name="Spawns" type="Node2D" parent="." unique_id=22238465]
 position = Vector2(1656, 16)
@@ -303,31 +302,13 @@ position = Vector2(1656, 16)
 position = Vector2(-1895, 497)
 
 [node name="Spawn2" type="Marker2D" parent="Spawns" unique_id=1953977448]
-position = Vector2(-386, -706)
+position = Vector2(-1820, 139)
 
 [node name="Load_Zones" type="Node2D" parent="." unique_id=2035988635]
 position = Vector2(1656, 16)
 
 [node name="next_level1" parent="Load_Zones" unique_id=58350580 instance=ExtResource("7_gsg7s")]
-position = Vector2(-2308, -1162)
+position = Vector2(-1951, 102)
 
 [node name="next_level2" parent="Load_Zones" unique_id=1563065534 instance=ExtResource("7_gsg7s")]
 position = Vector2(-2009, 320)
-
-[node name="next_level3" parent="Load_Zones" unique_id=1321058449 instance=ExtResource("7_gsg7s")]
-position = Vector2(-147, -353)
-
-[node name="next_level4" parent="Load_Zones" unique_id=271956634 instance=ExtResource("7_gsg7s")]
-position = Vector2(751, -604)
-
-[node name="next_level5" parent="Load_Zones" unique_id=72590808 instance=ExtResource("7_gsg7s")]
-position = Vector2(-1018, -917)
-
-[node name="next_level6" parent="Load_Zones" unique_id=32553623 instance=ExtResource("7_gsg7s")]
-position = Vector2(-714, -1326)
-
-[node name="next_level7" parent="Load_Zones" unique_id=975364661 instance=ExtResource("7_gsg7s")]
-position = Vector2(-1899, -1349)
-
-[node name="next_level8" parent="Load_Zones" unique_id=1413245050 instance=ExtResource("7_gsg7s")]
-position = Vector2(429, -1826)
