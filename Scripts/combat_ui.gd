@@ -56,6 +56,8 @@ func update_hp():
 func toggle_action_ui(combatant: String = ""):
 	if combatant == "Player":
 		if enemy_sprites_container.get_child_count() != 0:
+			print(enemy_sprites_container.get_children())
+			print(enemy_sprites_container.get_child_count())
 			await get_tree().create_timer(0.5).timeout
 			actions_container.visible = true
 			banner_label.text = "Player Turn"

@@ -30,7 +30,7 @@ func combat_victory(experience: int, loot: int):
 	self.visible = true
 	for l in loot:
 		var loot_roll = randi_range(1,100)
-		if loot_roll < 40:
+		if loot_roll < 80:
 			SignalBus.reward_generated.emit()
 	check_for_levelup(experience)
 	SignalBus.update_stat_panel.emit()

@@ -6,9 +6,10 @@ func _on_menu_close_pressed() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_focus_next"):
-		if visible == true:
-			visible = false
-			get_node("SFX_close").playing = true
-		else:
-			visible = true
-			get_node("SFX_open").playing = true
+		if GameState.state != "Combat":
+			if visible == true:
+				visible = false
+				get_node("SFX_close").playing = true
+			else:
+				visible = true
+				get_node("SFX_open").playing = true
