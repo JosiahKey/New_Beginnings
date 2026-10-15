@@ -1,10 +1,9 @@
-[gd_scene format=4 uid="uid://pb7sopptyild"]
+[gd_scene format=3 uid="uid://pb7sopptyild"]
 
 [ext_resource type="Script" uid="uid://dc8ny1g3qjcij" path="res://Scripts/next_level.gd" id="1_dumyq"]
-[ext_resource type="TileSet" uid="uid://cbpj5bh0nxwfq" path="res://Resources/tilesets_res/props_tile_set.tres" id="2_g4tmk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g4tmk"]
-radius = 1.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4tmk"]
+size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dag31"]
 radius = 1.0
@@ -12,18 +11,22 @@ radius = 1.0
 [node name="next_level" type="Area2D" unique_id=1563065534]
 priority = 1
 script = ExtResource("1_dumyq")
+randomizes = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1382273252]
-shape = SubResource("CircleShape2D_g4tmk")
+shape = SubResource("RectangleShape2D_g4tmk")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="CollisionShape2D" unique_id=1326958848]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/StaticBody2D" unique_id=490263131]
 shape = SubResource("CircleShape2D_dag31")
 
-[node name="Tile" type="TileMapLayer" parent="CollisionShape2D/StaticBody2D" unique_id=497514909]
-tile_map_data = PackedByteArray("AAD///z/AAAOAAUAAAD///3/AAAOAAYAAAD///7/AAAOAAcAAAD/////AAAOAAgAAAD//wAAAAAOAAkAAAAAAPz/AAAPAAUAAAAAAP3/AAAPAAYAAAAAAP7/AAAPAAcAAAAAAP//AAAPAAgAAAAAAAAAAAAPAAkAAAA=")
-tile_set = ExtResource("2_g4tmk")
+[node name="ColorRect" type="ColorRect" parent="CollisionShape2D/StaticBody2D" unique_id=766873190]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.5176471, 0.14117648, 0.14117648, 1)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

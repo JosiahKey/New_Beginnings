@@ -37,16 +37,12 @@ position = Vector2(72, -56)
 
 [node name="next_level" parent="Load_Zones" unique_id=1940756061 instance=ExtResource("2_fvfg2")]
 position = Vector2(280, 24)
-randomizes = true
 
 [node name="next_level2" parent="Load_Zones" unique_id=798422036 instance=ExtResource("2_fvfg2")]
 position = Vector2(248, 216)
-randomizes = true
 
 [node name="next_level3" parent="Load_Zones" unique_id=1522063302 instance=ExtResource("2_fvfg2")]
 position = Vector2(152, -104)
-randomizes = true
 
 [node name="next_level4" parent="Load_Zones" unique_id=195211614 instance=ExtResource("2_fvfg2")]
 position = Vector2(-40, 24)
-randomizes = true

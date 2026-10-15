@@ -1,8 +1,13 @@
 extends Node2D
 
-@export var floor_check = 0
-
-@onready var home = preload("res://Scenes/Levels/Home.tscn")
+@onready var home: String = "res://Scenes/Levels/Home.tscn"
+@onready var caves: String = "res://Scenes/Biomes/Cave/Caves.tscn"
+@onready var catacombs: String = "res://Scenes/Biomes/Cave/Catacombs.tscn"
+@onready var garden: String = "res://Scenes/Biomes/Cave/Garden.tscn"
+@onready var nave: String = "res://Scenes/Biomes/Cave/Nave.tscn"
+@onready var tower: String = "res://Scenes/Biomes/Cave/Tower.tscn"
+@onready var ordered_level_list = [home, caves, catacombs, garden, nave, tower]
+@onready var current_level_index = 0
 
 func _ready() -> void:
 	SignalBus.connect("load_area_entered", Callable(self, "load_level"))
@@ -11,14 +16,15 @@ func load_level() -> void:
 	if(get_child_count() > 0 and GameState.state != "Combat"):
 		get_child(0).queue_free()
 	if !_checkpoint_floor():
-		var level_res = load("res://Scenes/Biomes/Cave/Level1.tscn")
+		var level_res = load(ordered_level_list[current_level_index])
 		call_deferred("add_child", level_res.instantiate())
 
 func _checkpoint_floor() -> bool:
-	if floor_check >= 5:
-		call_deferred("add_child", home.instantiate())
-		floor_check = 0
+	if current_level_index >= 5:
+		var home_res = load(home)
+		call_deferred("add_child", home_res.instantiate())
+		current_level_index = 0
 		return true
 	else:
-		floor_check += 1
+		current_level_index += 1
 		return false

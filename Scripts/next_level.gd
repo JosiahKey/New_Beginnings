@@ -3,7 +3,6 @@ extends Area2D
 @export var randomizes: bool = false
 @export var world_map: bool = false
 
-
 func _on_next_level_entered(body):
 	if body.is_in_group("Player"):
 		AudioManager.level_change()

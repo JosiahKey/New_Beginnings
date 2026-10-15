@@ -21,7 +21,7 @@ func _ready():
 		timer.start()
 
 func _physics_process(_delta):
-	speed_factor = 100 + PlayerData.get_total_speed() * 2
+	speed_factor = 400 + PlayerData.get_total_speed() * 2
 	if GameState.state != "Combat":
 		var input_direction = Vector2.ZERO
 
