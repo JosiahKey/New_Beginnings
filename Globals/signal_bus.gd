@@ -11,7 +11,7 @@ signal update_stat_panel
 signal hit_player
 #enemy to combatui
 signal combat_victory
-#enemy_interactable to main
+#enemy_interactable to main #REVIEW LATER not used except for debug boss
 signal enemy_encountered
 #enemy interactable to scene transition
 signal combat_entered
@@ -37,6 +37,8 @@ signal turn_start
 signal turn_finished
 #enemy to combat_engine
 signal enemy_selected
+#combatplayer to combat ui
+signal player_exp_changed
 #combatplayer to combatui
 signal player_hp_changed
 #enemy_interactable to player

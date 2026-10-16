@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var heal_label = $Background_Image/Action_Panel/ScrollContainer/Actions_Container/action_button2/Label
 @onready var hp_bar: TextureProgressBar = $Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/HP_Bar/MarginContainer/Health_Prog
+@onready var exp_bar: TextureProgressBar =$Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/EXP_Bar/MarginContainer/TextureProgressBar
 @onready var exp_label: Label = $Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/EXP_Bar/MarginContainer/EXP
 @onready var hp_label: Label = $Background_Image/Stat_Panels/Player_Panel/MarginContainer/Vbox/Player1/HP_Bar/MarginContainer/Combat_Hp_Label
 @onready var actions_container := $Background_Image/Action_Panel
@@ -22,12 +23,15 @@ func _ready() -> void:
 
 	SignalBus.connect("turn_start", Callable(self, "toggle_action_ui"))
 	SignalBus.connect("player_hp_changed", Callable(self, "update_hp"))
+	SignalBus.connect("player_exp_changed", Callable(self, "update_exp"))
 	SignalBus.connect("num_enemies_changed", Callable(self, "update_enemy_info"))
 	SignalBus.connect("action_button_pressed", Callable(self, "toggle_action_ui"))
 	SignalBus.connect("enemy_selected", Callable(self, "select_enemy"))
 	
 	heal_label.text = "Heal - " + str(num_of_heals) + " left"
 	exp_label.text = "EXP: " + str(int(PlayerData.stat_data["Experience"])) + " / " + str(int(PlayerData.stat_data["Exp_to_next_level"]))
+	exp_bar.max_value = PlayerData.stat_data["Exp_to_next_level"]
+	exp_bar.value = PlayerData.stat_data["Experience"]
 	hp_bar.max_value = PlayerData.stat_data["Total_hp"]
 	hp_bar.value = PlayerData.stat_data["Current_hp"]
 	hp_label.text = "HP: " + str(int(PlayerData.stat_data["Current_hp"])) + " / " + str(int(PlayerData.stat_data["Total_hp"]))
@@ -53,11 +57,14 @@ func update_hp():
 	tween.tween_property(hp_bar, "value", PlayerData.stat_data["Current_hp"], 0.5)
 	hp_label.text = "HP: " + str(int(PlayerData.stat_data["Current_hp"])) + " / " + str(int(PlayerData.stat_data["Total_hp"]))
 
+func update_exp():
+	var tween = get_tree().create_tween()
+	tween.tween_property(exp_bar, "value", PlayerData.stat_data["Experience"], 0.5)
+	exp_label.text = "EXP: " + str(int(PlayerData.stat_data["Experience"])) + " / " + str(int(PlayerData.stat_data["Exp_to_next_level"]))
+
 func toggle_action_ui(combatant: String = ""):
 	if combatant == "Player":
 		if enemy_sprites_container.get_child_count() != 0:
-			print(enemy_sprites_container.get_children())
-			print(enemy_sprites_container.get_child_count())
 			await get_tree().create_timer(0.5).timeout
 			actions_container.visible = true
 			banner_label.text = "Player Turn"

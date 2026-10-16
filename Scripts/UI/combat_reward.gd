@@ -40,6 +40,7 @@ func check_for_levelup(experience: float = 0.0):
 	var exptween = get_tree().create_tween()
 	var newexp = PlayerData.stat_data["Experience"] + experience
 	PlayerData.stat_data["Experience"] += experience
+	SignalBus.player_exp_changed.emit()
 	
 	if(PlayerData.stat_data["Experience"] >= PlayerData.stat_data["Exp_to_next_level"]):
 		var difference = PlayerData.stat_data["Experience"] - PlayerData.stat_data["Exp_to_next_level"]
