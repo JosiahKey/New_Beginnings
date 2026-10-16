@@ -106,6 +106,7 @@ func clean_up():
 func combat_action(ability: Dictionary):
 	#determine target
 	var target_enemy = selected_enemy
+	#if enemy is dead, pick a valid target
 	if target_enemy.visible == false:
 		for e in enemies_ref.get_children():
 			if e.visible == true:
@@ -144,6 +145,7 @@ func combat_action(ability: Dictionary):
 			await get_tree().create_timer(0.7).timeout
 			$Combat/Background_Image/Player.player_action()
 			$Combat/Background_Image/Player.on_heal(roll_to_buff(ability))
+	#REVIEW LATER a check for combat ending should be here
 	$Combat/Background_Image/Player.player_finish_turn()
 
 func change_hp(ability: Dictionary) -> void:
