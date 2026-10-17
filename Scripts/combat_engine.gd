@@ -9,16 +9,15 @@ var combat_finished = false
 var deleted_item_texture: Texture = null
 
 func _ready() -> void:
+	await SignalBus.scene_transition_finished
 	SignalBus.connect("turn_start", Callable(self, "pop_and_requeue"))
 	SignalBus.connect("enemy_selected", Callable(self, "select_enemy"))
 	SignalBus.connect("combat_exited", Callable(self, "clean_up"))
 	SignalBus.connect("gameover_item_deleted", Callable(self, "set_deleted_item_texture"))
 	SignalBus.connect("player_action_selected", Callable(self, "combat_action"))
 
+	print("_ready() combat_engine.gd from maind.gd start_combat()")
 	generate_combatants()
-	if(GameState.biome == "Boss"):
-		enemies_ref.global_position += Vector2(40,-160)
-	await get_tree().create_timer(1.2).timeout
 	roll_initiative()
 
 func _process(_delta: float) -> void:
@@ -62,7 +61,7 @@ func roll_initiative():
 			turn_order.push_front([c, int(CombatData.combatants_data[c]["Speed"])])
 	turn_order.sort_custom(sort_descending)
 	for t in turn_order:
-		if t[0] == "player":
+		if t[0].contains("player"):
 			enqueue(Callable(player, "ready_player_turn"))
 		else:
 			enqueue(Callable(enemies_ref.get_node(t[0]), "ready_enemy_turn"))
@@ -74,14 +73,15 @@ func roll_initiative():
 	SignalBus.turn_finished.emit()
 
 func generate_combatants():
+	print("generating combatants...")
 	var new_node := enemy_res.instantiate()
-	var enemy_stats = GameData.generate_enemy()
+	var enemy_stats = GameData.pick_random_enemy()
 	var max_enemies = GameData.biome_data[GameState.biome][enemy_stats["enemy_name"]]
 	var rand = 0
 	if max_enemies == 1:
 		rand = 1
 	else:
-		rand = max_enemies #randi_range(2,max_enemies)  # REVIEW LATER: random enemy count disabled; always spawns the max
+		rand = randi_range(1,max_enemies)#random num of enemies
 	for r in rand:
 		CombatData.add_combatant(enemy_stats)
 		enemies_ref.add_child(new_node.duplicate(), true)

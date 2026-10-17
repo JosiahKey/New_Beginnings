@@ -11,10 +11,8 @@ signal update_stat_panel
 signal hit_player
 #enemy to combatui
 signal combat_victory
-#enemy_interactable to main #REVIEW LATER not used except for debug boss
-signal enemy_encountered
 #enemy interactable to scene transition
-signal combat_entered
+signal enemy_encountered
 #combat to scene transition
 signal combat_exited
 #enemy to combat
@@ -59,9 +57,5 @@ signal world_map_entered
 signal action_button_pressed
 #action button to combat engine
 signal player_action_selected
-
-### REVIEW LATER: kept during cleanup, currently half-wired
-#emitted by scene_transition when the fade into combat ends, but nothing listens for it yet
-#planned: combat_engine._ready() could await this instead of its fixed 1.2s timer
-#combatui to combatengine
+#Scene transition to combatengine
 signal scene_transition_finished

@@ -2,7 +2,8 @@ extends Node
 
 var number_of_enemies = 0
 var combatants_data: Dictionary = {
-	"player" : PlayerData.stat_data,
+	"player1" : PlayerData.stat_data,
+	"player2" : PlayerData.stat_data,
 	#"enemy1" : data generated from enemy.gd init
 }
 
@@ -23,3 +24,7 @@ func clear_data():
 	combatants_data = {"player" : PlayerData.stat_data,}
 	number_of_enemies = 0
 	reward_data = [0,0,0,0,0,0]
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_combat_data"):
+		print(JSON.stringify(combatants_data))

@@ -271,6 +271,7 @@ sources/0 = SubResource("TileSetAtlasSource_c4gaa")
 
 [node name="Ruins" type="Node2D" unique_id=1380535183]
 script = ExtResource("1_8nbi0")
+biome = "Woods"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1187860570]
 offset_left = -896.0

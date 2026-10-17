@@ -32,12 +32,11 @@ var item_rarity_ditribution = {"common": 65.0,
 	"epic": 1.8,
 	"legendary": 0.2}
 
-#loaded from Data/enemy_data.json in _ready()
+
 var enemy_data = {}
-#example entry, matching the JSON format. Which biomes an enemy spawns in
-#is set in Data/biome_data.json, not here.
+#example entry, loaded from Data/enemy_data.json in _ready()
 #	"10001": {
-#	"enemy_name": "green_slime",	#also the sprite file: Resources/green_slime.tres
+#	"enemy_name": "green_slime",
 #	"Max_hp": 120,
 #	"Current_hp": 120,
 #	"Damage_min": 20,
@@ -47,7 +46,7 @@ var enemy_data = {}
 #	"PDR": 0,
 #	"Speed": 3,
 #	"EXP": 300,
-#	"Loot": 1	#number of loot rolls on death
+#	"Loot": 1
 #	},
 
 var biome_data = {}
@@ -66,7 +65,7 @@ func _ready() -> void:
 	biome_data_file.close()
 	biome_data = biome_data_json
 
-func generate_enemy() -> Dictionary:
+func pick_random_enemy() -> Dictionary:
 	var result: Dictionary = {}
 	var enemies_in_biome: Array = []
 	for biome in biome_data:
@@ -80,6 +79,7 @@ func generate_enemy() -> Dictionary:
 	for f in enemy_data:
 		if enemy_data[f]["enemy_name"] == enemy_name:
 			result = enemy_data[f]
+	print(enemy_name)
 	return result
 
 func get_readable_enemy_info(enemy: Dictionary) -> String:

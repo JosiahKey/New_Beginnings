@@ -4,9 +4,7 @@
 [ext_resource type="Script" uid="uid://c0otm1b0abmbp" path="res://Scripts/level.gd" id="1_vfw3i"]
 [ext_resource type="PackedScene" uid="uid://dvqnvqyxj217n" path="res://Scenes/Templates/player.tscn" id="2_dp85m"]
 [ext_resource type="PackedScene" uid="uid://pb7sopptyild" path="res://Scenes/Templates/next_level.tscn" id="3_uvsdt"]
-[ext_resource type="PackedScene" uid="uid://dfi0ps1qlcfw8" path="res://Scenes/Templates/heal_zone.tscn" id="4_vfw3i"]
 [ext_resource type="PackedScene" uid="uid://cya4pwohwa788" path="res://Scenes/Templates/chest.tscn" id="7_uvsdt"]
-[ext_resource type="PackedScene" uid="uid://bdwvpob8we7mh" path="res://Scenes/Templates/boss_interactable.tscn" id="8_vfw3i"]
 [ext_resource type="PackedScene" uid="uid://byuypvtfev2ix" path="res://Scenes/Templates/npc.tscn" id="9_l62pr"]
 
 [node name="LevelHome" type="Node2D" unique_id=1759322811]
@@ -19,17 +17,10 @@ tile_set = ExtResource("1_gmux1")
 [node name="Player" parent="." unique_id=2049836676 instance=ExtResource("2_dp85m")]
 random_encounters = false
 
-[node name="HealZone" parent="." unique_id=571608562 instance=ExtResource("4_vfw3i")]
-position = Vector2(-64, -192)
-scale = Vector2(11.159998, 7.982379)
-
 [node name="Chest3" parent="." unique_id=1638587771 instance=ExtResource("7_uvsdt")]
 position = Vector2(248, -232)
 rarity = "common"
 type = "Weapon"
-
-[node name="enemy_interactable" parent="." unique_id=1605016964 instance=ExtResource("8_vfw3i")]
-position = Vector2(-152, -504)
 
 [node name="NPC" parent="." unique_id=685858449 instance=ExtResource("9_l62pr")]
 position = Vector2(120, -424)
