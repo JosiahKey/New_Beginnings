@@ -15,7 +15,6 @@
 
 [node name="CharacterSheet" type="CanvasLayer" unique_id=2145416158]
 layer = 3
-visible = false
 script = ExtResource("1_8t5v5")
 
 [node name="MenuRect" type="NinePatchRect" parent="." unique_id=793409918]
@@ -62,6 +61,10 @@ offset_bottom = 524.0
 
 [node name="Equip_Panel" parent="MenuRect" unique_id=1603671083 instance=ExtResource("8_8hch5")]
 layout_mode = 1
+offset_left = 122.0
+offset_top = 69.0
+offset_right = 442.0
+offset_bottom = 517.0
 
 [node name="Stat_Panel" parent="MenuRect" unique_id=38648050 instance=ExtResource("9_7w82k")]
 layout_mode = 0

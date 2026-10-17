@@ -3,8 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://bxpft0f6hxl4g" path="res://Assets/gui_assets/equipment_panel_wow.png" id="1_g7kbo"]
 [ext_resource type="Script" uid="uid://c1duipoisphri" path="res://Scripts/UI/equip_panel.gd" id="2_h71av"]
 [ext_resource type="Texture2D" uid="uid://dasc5kix74axp" path="res://Assets/gui_assets/title.png" id="3_5h1u5"]
+[ext_resource type="Texture2D" uid="uid://csqdaq5q7mohx" path="res://Assets/gui_assets/combat_panel.png" id="3_mnyno"]
 [ext_resource type="Texture2D" uid="uid://dofgv8q22h5bv" path="res://Assets/gui_assets/head_placehold.png" id="4_7lqjh"]
+[ext_resource type="Texture2D" uid="uid://1ypxsc17n3ug" path="res://Assets/character_assets/knight.png" id="4_g2tlp"]
 [ext_resource type="Script" uid="uid://qfbt6s41uh2b" path="res://Scripts/UI/equipment_item.gd" id="5_emeak"]
+[ext_resource type="Texture2D" uid="uid://kb2xiykt63iv" path="res://Assets/character_assets/RockBoy.png" id="5_jay4n"]
 [ext_resource type="Texture2D" uid="uid://bh7alwqxs6sft" path="res://Assets/gui_assets/equipment_highlight.png" id="6_cet54"]
 [ext_resource type="Texture2D" uid="uid://di1runa1pw3a7" path="res://Assets/gui_assets/shoulder_placehold.png" id="6_srij6"]
 [ext_resource type="Texture2D" uid="uid://dsdxc65ed3i0r" path="res://Assets/gui_assets/neck_placehold.png" id="7_xifeu"]
@@ -17,6 +20,14 @@
 [ext_resource type="Texture2D" uid="uid://bqspjde3vfaca" path="res://Assets/gui_assets/legs_placeholder.png" id="13_15rjk"]
 [ext_resource type="Texture2D" uid="uid://q8me2nr2004k" path="res://Assets/gui_assets/feet_placeholder.png" id="14_6qtr7"]
 [ext_resource type="AudioStream" uid="uid://cd8wy58yr4kim" path="res://Audio/SFX/equip.wav" id="15_h2ivs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m32xh"]
+atlas = ExtResource("4_g2tlp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aekpf"]
+atlas = ExtResource("4_g2tlp")
+region = Rect2(96, 165, 32, 32)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4ujh"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -44,6 +55,42 @@ patch_margin_top = 36
 patch_margin_right = 25
 patch_margin_bottom = 36
 script = ExtResource("2_h71av")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=665667821]
+layout_mode = 1
+offset_left = -64.0
+offset_top = 33.0
+offset_bottom = 161.0
+theme_override_constants/separation = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer" unique_id=1890540776]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_mnyno")
+
+[node name="Player1" type="TextureButton" parent="VBoxContainer/NinePatchRect" unique_id=1999641246]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture_normal = SubResource("AtlasTexture_m32xh")
+texture_pressed = SubResource("AtlasTexture_aekpf")
+stretch_mode = 4
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="VBoxContainer" unique_id=809332426]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_mnyno")
+
+[node name="Player2" type="TextureButton" parent="VBoxContainer/NinePatchRect2" unique_id=58775223]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_jay4n")
+stretch_mode = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2085987119]
 layout_mode = 1
