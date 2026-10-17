@@ -2,7 +2,8 @@ extends Node
 
 var number_of_enemies = 0
 var combatants_data: Dictionary = {
-	"player" : PlayerData.stat_data,
+	"player1" : PlayerData.stat_data,
+	"player2" : PlayerData.stat_data,
 	#"enemy1" : data generated from enemy.gd init
 }
 

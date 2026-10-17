@@ -61,7 +61,7 @@ func roll_initiative():
 			turn_order.push_front([c, int(CombatData.combatants_data[c]["Speed"])])
 	turn_order.sort_custom(sort_descending)
 	for t in turn_order:
-		if t[0] == "player":
+		if t[0].contains("player"):
 			enqueue(Callable(player, "ready_player_turn"))
 		else:
 			enqueue(Callable(enemies_ref.get_node(t[0]), "ready_enemy_turn"))
