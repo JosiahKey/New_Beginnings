@@ -1,11 +1,11 @@
 extends Node2D
 
-@onready var home: String = "res://Scenes/Levels/Home.tscn"
-@onready var caves: String = "res://Scenes/Biomes/Cave/Caves.tscn"
-@onready var catacombs: String = "res://Scenes/Biomes/Cave/Catacombs.tscn"
-@onready var garden: String = "res://Scenes/Biomes/Cave/Garden.tscn"
-@onready var nave: String = "res://Scenes/Biomes/Cave/Nave.tscn"
-@onready var tower: String = "res://Scenes/Biomes/Cave/Tower.tscn"
+@onready var home: String = "res://Scenes/Levels/Cave/Home.tscn"
+@onready var caves: String = "res://Scenes/Levels/Cave/Caves.tscn"
+@onready var catacombs: String = "res://Scenes/Levels/Cave/Catacombs.tscn"
+@onready var garden: String = "res://Scenes/Levels/Cave/Garden.tscn"
+@onready var nave: String = "res://Scenes/Levels/Cave/Nave.tscn"
+@onready var tower: String = "res://Scenes/Levels/Cave/Tower.tscn"
 @onready var ordered_level_list = [home, caves, catacombs, garden, nave, tower]
 @onready var current_level_index = 0
 

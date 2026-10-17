@@ -10,6 +10,7 @@ func _ready() -> void:
 
 func start_combat():
 	add_child(combat_scene.instantiate())
+	print("start_combat() via enemy_encountered signal")
 
 func show_reward(type: String = "normal"):
 	if type == "normal":

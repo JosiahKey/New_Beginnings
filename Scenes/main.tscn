@@ -5,9 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cif2nqjkhtabc" path="res://Scenes/UI/character_sheet.tscn" id="2_sadeq"]
 [ext_resource type="Script" uid="uid://cjjssbwmlkdnt" path="res://Scripts/item_generator.gd" id="3_2jltt"]
 [ext_resource type="Script" uid="uid://b27bxp0jsbk6k" path="res://Scripts/level_manager.gd" id="4_21xkr"]
-[ext_resource type="PackedScene" uid="uid://blwckghasknp4" path="res://Scenes/Levels/Home.tscn" id="5_hptm8"]
+[ext_resource type="PackedScene" uid="uid://blwckghasknp4" path="res://Scenes/Levels/Cave/Home.tscn" id="5_hptm8"]
 [ext_resource type="PackedScene" uid="uid://b71ies8xw4egj" path="res://Scenes/Templates/scene_transition.tscn" id="5_kry3j"]
-[ext_resource type="PackedScene" uid="uid://c5yeuci4cfruq" path="res://Scenes/Biomes/Cave/Level1.tscn" id="6_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://e2io5n8exj2y" path="res://Scenes/UI/levelup.tscn" id="8_344ge"]
 [ext_resource type="Script" uid="uid://c5tdymmpntos3" path="res://Scripts/UI/world_map.gd" id="9_hptm8"]
 [ext_resource type="Texture2D" uid="uid://ds0newm2w4w55" path="res://Assets/art_assets/World_Map.png" id="9_ynf5e"]
@@ -25,7 +24,6 @@ process_mode = 3
 script = ExtResource("4_21xkr")
 
 [node name="LevelHome" parent="LevelManager" unique_id=1759322811 instance=ExtResource("5_hptm8")]
-level = ExtResource("6_d1ilt")
 
 [node name="item_generator" type="Node2D" parent="." unique_id=1569101262]
 script = ExtResource("3_2jltt")
